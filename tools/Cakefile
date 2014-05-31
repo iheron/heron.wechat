@@ -1,0 +1,21 @@
+fs = require "fs"
+
+{print} = require "sys"
+{spawn} = require "child_process"
+
+build = (watch, callback) ->
+	cmd = if process.platform is "win32" then "coffee.cmd" else "coffee"
+	options = if watch then ["-w", "-c", "-o", "lib", "src"] else ["-c", "-o", "lib", "src"]
+	coffee = spawn cmd, options
+	coffee.stderr.on "data", (data) ->
+		process.stderr.write data.toString()
+	coffee.stdout.on "data", (data) ->
+		print data.toString()
+	coffee.on "exit", (code) ->
+		callback?() if code is 0
+
+task "build", "Build lib/ from src/", ->
+	build()
+
+task "watch", "Watch src/ for changes", ->
+    build true

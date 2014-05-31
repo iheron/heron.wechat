@@ -1,0 +1,35 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/app.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/test2.js" />
+      <root url="file://$PROJECT_DIR$/test2.js" />
+      <root url="file://$PROJECT_DIR$/src/test2.js" />
+      <root url="file://$PROJECT_DIR$/lib/test.js" />
+      <root url="file://$PROJECT_DIR$/lib/test2.js" />
+      <root url="file://$PROJECT_DIR$/src/test2.js" />
+      <root url="file://$PROJECT_DIR$/lib/test.js" />
+      <root url="file://$PROJECT_DIR$/lib/test2.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/tests/test1/test.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/tests/test1/test.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/asdasd.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/asdasd.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/asdasd.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/dir1/dir2/test2.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/test1.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/dir1/dir2/test2.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/test1.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/dir1/dir2/test3.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/test2.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/test.js" />
+      <root url="file://$PROJECT_DIR$/lib/src/test.js" />
+      <root url="file://$PROJECT_DIR$/lib/test.js" />
+      <root url="file://$PROJECT_DIR$/app.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
