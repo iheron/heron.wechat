@@ -2,7 +2,20 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/app.js" />
+        <item url="file://$PROJECT_DIR$/api-server/bin/start.js" />
+        <item url="file://$PROJECT_DIR$/api-server/routes/api_route.js" />
+        <item url="file://$PROJECT_DIR$/api-server/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/src/ipaddr.js" />
+        <item url="file://$PROJECT_DIR$/api-server/controllers/api_controller.js" />
+        <item url="file://$PROJECT_DIR$/api-server/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/test/ipaddr.test.js" />
+        <item url="file://$PROJECT_DIR$/api-server/config/express.js" />
+        <item url="file://$PROJECT_DIR$/api-server/helper/logger.js" />
+        <item url="file://$PROJECT_DIR$/api-server/routes/index.js" />
+        <item url="file://$PROJECT_DIR$/api-server/config/log4js.js" />
+        <item url="file://$PROJECT_DIR$/web-server/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/test/ipaddr.test.js" />
+        <item url="file://$PROJECT_DIR$/api-server/app.js" />
+        <item url="file://$PROJECT_DIR$/web-server/app.js" />
+        <item url="file://$PROJECT_DIR$/api-server/config/index.js" />
+        <item url="file://$PROJECT_DIR$/web-server/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/src/ipaddr.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -29,6 +42,21 @@
       <root url="file://$PROJECT_DIR$/lib/src/test.js" />
       <root url="file://$PROJECT_DIR$/lib/test.js" />
       <root url="file://$PROJECT_DIR$/app.js" />
+      <root url="file://$PROJECT_DIR$/app.js" />
+      <root url="file://$PROJECT_DIR$/api-server/bin/start.js" />
+      <root url="file://$PROJECT_DIR$/api-server/routes/api_route.js" />
+      <root url="file://$PROJECT_DIR$/api-server/controllers/api_controller.js" />
+      <root url="file://$PROJECT_DIR$/api-server/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/src/ipaddr.js" />
+      <root url="file://$PROJECT_DIR$/api-server/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/test/ipaddr.test.js" />
+      <root url="file://$PROJECT_DIR$/api-server/config/express.js" />
+      <root url="file://$PROJECT_DIR$/api-server/helper/logger.js" />
+      <root url="file://$PROJECT_DIR$/api-server/routes/index.js" />
+      <root url="file://$PROJECT_DIR$/api-server/config/log4js.js" />
+      <root url="file://$PROJECT_DIR$/web-server/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/test/ipaddr.test.js" />
+      <root url="file://$PROJECT_DIR$/web-server/app.js" />
+      <root url="file://$PROJECT_DIR$/api-server/app.js" />
+      <root url="file://$PROJECT_DIR$/api-server/config/index.js" />
+      <root url="file://$PROJECT_DIR$/web-server/node_modules/express/node_modules/proxy-addr/node_modules/ipaddr.js/src/ipaddr.js" />
     </CLASSES>
     <SOURCES />
   </library>
