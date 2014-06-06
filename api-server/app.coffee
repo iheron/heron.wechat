@@ -28,6 +28,7 @@ app.use (req, res, next) ->
 # err
 if "development" == app.get "env"
   app.use (err, req, res, next) ->
+    next()
     res.status err.status or 500
     res.send
       message: err.message,
