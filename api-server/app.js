@@ -18,12 +18,6 @@
 
   logger = require("./helper/logger").getLogger();
 
-  logger.info("log4js");
-
-  logger.error("error");
-
-  logger.fatal("fatal");
-
   routes(app);
 
   app.use(function(req, res, next) {
@@ -50,8 +44,7 @@
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     return res.send({
-      message: err.message,
-      error: err
+      message: err.message
     });
   });
 

@@ -4,13 +4,18 @@
 
   crypto = require("crypto");
 
-  encrypt = function() {};
+  encrypt = (function() {
+    function encrypt() {}
 
-  encrypt.sha1Hash = function(str) {
-    var hasher;
-    hasher = crypto.createHash("sha1");
-    return hasher.update(str).digest("hex");
-  };
+    encrypt.sha1Hash = function(str) {
+      var hasher;
+      hasher = crypto.createHash("sha1");
+      return hasher.update(str).digest("hex");
+    };
+
+    return encrypt;
+
+  })();
 
   module.exports = encrypt;
 

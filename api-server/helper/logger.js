@@ -4,14 +4,16 @@
 
   log4js = require("log4js");
 
-  logger = function() {};
+  logger = (function() {
+    function logger() {}
 
-  logger.getLogger = function(category) {
-    if (category == null) {
-      category = "default";
-    }
-    return log4js.getLogger(category);
-  };
+    logger.getLogger = function(category) {
+      return log4js.getLogger(category);
+    };
+
+    return logger;
+
+  })();
 
   module.exports = logger;
 

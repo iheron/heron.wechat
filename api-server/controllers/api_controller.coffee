@@ -1,28 +1,35 @@
 consts = require "../consts/consts"
-encrypt = require "../helper/encrypt"
 express = require "express"
+helper_wechat = require("../helper/wechat")(consts.WECHAT_TOKEN)
+logger = require "../helper/logger"
+.getLogger("api_controller")
+
+
 router = express.Router()
 
 
+controller = {}
 
-controller = ->
-
-controller.wechat =
-  get: (req, res, next) ->
-    token = consts.WECHAT_TOKEN
-    signature = req.query.signature
-    timestamp = req.query.timestamp
-    nonce = req.query.nonce
-#    echostr = req.query.echostr
-    str = [token, timestamp, nonce].sort().join("")
-    strHash = encrypt.sha1Hash(str)
-    if strHash is signature
-      res.send 200, req.query.echostr
+class controller.wechat
+  @get: (req, res, next) ->
+    if not helper_wechat.checkSignature(req.query)
+      logger.error req.query
+      res.send 200, ""
     else
-      res.send 200, false
+      res.send 200, req.query.echostr
 
-
-  post: (req, res, next) ->
-    res.send "this is post"
+  @post: (req, res, next) ->
+    if not helper_wechat.checkSignature(req.query)
+      logger.error req.query
+      res.send 200, ""
+    else
+      helper_wechat.getMsg req, (data) ->
+        console.log data
+        msg =
+          FromUserName: data.ToUserName
+          ToUserName: data.FromUserName
+          Content: """demo: 最近的上课时间是 2014-06-09 周一 数据结构，上课时间：18:30，地点：3-301。作业进度：<a href="#">点击查看详情</a>"""
+        xml = helper_wechat.parseMsg msg
+        res.send xml
 
 module.exports = controller

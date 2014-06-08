@@ -6,7 +6,7 @@
 
   log4js.configure("config/log4js.config", {});
 
-  dateFileLog = log4js.getLogger("default");
+  dateFileLog = log4js.getLogger("normal");
 
   module.exports = function(app) {
     return app.use(log4js.connectLogger(dateFileLog, {

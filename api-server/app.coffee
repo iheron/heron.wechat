@@ -13,9 +13,6 @@ log4js_config app
 logger = require "./helper/logger"
 .getLogger()
 
-logger.info "log4js"
-logger.error "error"
-logger.fatal "fatal"
 # route
 routes(app)
 
@@ -39,7 +36,6 @@ if "production" == app.get "env"
 app.use (err, req, res, next) ->
   res.status err.status or 500
   res.send
-    message: err.message,
-    error: err
+    message: err.message
 
 module.exports = app
