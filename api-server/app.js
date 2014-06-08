@@ -35,7 +35,6 @@
 
   if ("development" === app.get("env")) {
     app.use(function(err, req, res, next) {
-      next();
       res.status(err.status || 500);
       return res.send({
         message: err.message,
