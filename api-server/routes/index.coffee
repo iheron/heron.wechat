@@ -30,19 +30,15 @@ module.exports = (app) ->
           when "get"
             logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
             router.get "/#{action}", v
-#            app.use "/#{controller_arr[0]}", router
           when "post"
             logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
             router.post "/#{action}", v
-#            app.use "/#{controller_arr[0]}", router
           when "put"
             logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
             router.put "/#{action}", v
-#            app.use "/#{controller_arr[0]}", router
           when "delete"
             logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
             router.delete "/#{action}", v
-#            app.use "/#{controller_arr[0]}", router
           else
             logger.info "not found method!"
         app.use "/#{controller_arr[0]}", router
