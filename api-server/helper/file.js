@@ -13,8 +13,6 @@
     /**
      * 根据正则取得文件名, 并去重
      * @param: dir   # 文件路径
-     * @param: reg1  # 名字正则
-     * @param: reg2  # 二次正则
      */
 
     file.getRouteFileSync = function(dir) {
