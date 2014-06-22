@@ -11,6 +11,10 @@
       return res.send("get in test");
     };
 
+    action1.post = function(req, res, next) {
+      return res.send("post in test");
+    };
+
     return action1;
 
   })();
