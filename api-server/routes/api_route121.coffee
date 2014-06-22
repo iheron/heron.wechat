@@ -8,3 +8,4 @@ router.route "/wechat"
 .post controller.wechat.post
 
 module.exports = router
+

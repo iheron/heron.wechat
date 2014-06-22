@@ -5,12 +5,7 @@ logger = require "../helper/logger"
 .getLogger("api_controller")
 
 
-router = express.Router()
-
-
-controller = {}
-
-class controller.wechat
+class @wechat
   @get: (req, res, next) ->
     if not helper_wechat.checkSignature(req.query)
       logger.error req.query
@@ -32,4 +27,4 @@ class controller.wechat
         xml = helper_wechat.parseMsg msg
         res.send xml
 
-module.exports = controller
+module.exports = @

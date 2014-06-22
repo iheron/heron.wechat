@@ -39,10 +39,10 @@ parseXml = (data) ->
 """
   msg
 
-class wechat
+class Wechat
   constructor: (@token) ->
   checkSignature: (parms) ->
-    strHash = encrypt.sha1Hash [@token, parms.timestamp, parms.nonce].sort().join("")
+    strHash = encrypt.sha1Hash [ @token, parms.timestamp, parms.nonce ].sort().join("")
     if strHash is parms.signature
       true
     else
@@ -57,5 +57,4 @@ class wechat
     parseXml data
 
 
-module.exports = (token) ->
-  new wechat token
+module.exports = (token) -> new Wechat token

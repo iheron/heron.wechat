@@ -1,6 +1,46 @@
+fs = require "fs"
+path = require "path"
+_ = require "underscore"
+async = require "async"
 express = require "express"
-api  = require "./api_route"
+file = require "../helper/file"
 
-#todo 优化加载逻辑，映射到文件
+logger = require "../helper/logger"
+.getLogger("route_index")
+
+# 如果有路由则使用自定义 否则 使用controllers
 module.exports = (app) ->
-  app.use "/api", api
+  # load route
+  routes = file.getRouteFileSync __dirname
+  for route_arr in routes
+    route = require "./" + route_arr[1]
+    app.use "/#{route_arr[0]}", route
+    logger.info "load router: %j -> path: /%s", route_arr, route_arr[0]
+
+
+  controllers = file.getControllerFileSync (path.join __dirname, "../controllers")
+  controllers = _.reject controllers, (controller) -> _.find routes, (route) -> route[0] == controller[0]
+  logger.info "load all controller: %j", controllers
+  for controller_arr in controllers
+    controller = require "../controllers/" + controller_arr[1]
+    router = express.Router()
+    for action, methods of controller
+
+      for k, v of methods
+        switch k
+          when "get"
+            logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
+            router.get "/#{action}", v
+            app.use "/#{controller_arr[0]}", router
+          when "post"
+            logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
+            router.post "/#{action}", v
+            app.use "/#{controller_arr[0]}", router
+          when "put"
+            router.put "/#{action}", v
+            app.use "/#{controller_arr[0]}", router
+          when "delete"
+            router.delete "/#{action}", v
+            app.use "/#{controller_arr[0]}", router
+          else
+            logger.info "not found method!"
