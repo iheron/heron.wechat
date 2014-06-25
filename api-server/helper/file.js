@@ -51,6 +51,13 @@
       });
     };
 
+    file.loadConfigFileSync = function(path) {
+      if (path) {
+        return JSON.parse(fs.readFileSync(path, "utf8"));
+      }
+      return void 0;
+    };
+
     return file;
 
   })();

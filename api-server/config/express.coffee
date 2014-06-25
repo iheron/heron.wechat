@@ -4,8 +4,8 @@ path = require "path"
 
 module.exports = (app) ->
   # all
-#  app.use logger("dev")
-  app.use express.static(path.join(__dirname, "../public"))
+  # app.use logger("dev")
+  app.use express.static path.join(__dirname, "../public")
 
   # development
   if "development" == app.get "env"

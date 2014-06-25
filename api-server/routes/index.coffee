@@ -27,6 +27,9 @@ module.exports = (app) ->
     for action, methods of controller
       for k, v of methods
         switch k
+          when "all"
+            logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
+            router.all "/#{action}", v
           when "get"
             logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
             router.get "/#{action}", v

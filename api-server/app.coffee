@@ -8,10 +8,8 @@ routes = require "./routes"
 app = express()
 
 # configuration
-express_config app
 log4js_config app
-logger = require "./helper/logger"
-.getLogger()
+express_config app
 
 # route
 routes(app)

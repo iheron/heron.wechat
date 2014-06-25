@@ -6,4 +6,9 @@ class @action1
     res.send "get in test"
   @post: (req, res, next) ->
     res.send "post in test"
+
+class @action
+  @get: (req, res, next) ->
+    res.send "get"
+
 module.exports = @

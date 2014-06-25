@@ -48,6 +48,10 @@
             for (k in methods) {
               v = methods[k];
               switch (k) {
+                case "all":
+                  logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
+                  router.all("/" + action, v);
+                  break;
                 case "get":
                   logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
                   router.get("/" + action, v);
