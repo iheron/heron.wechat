@@ -1,5 +1,5 @@
 express = require "express"
-controller = require "../controllers/api_controller"
+controller = require "./api_controller"
 
 router = express.Router()
 

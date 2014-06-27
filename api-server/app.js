@@ -8,7 +8,7 @@
 
   log4js_config = require("./config/log4js");
 
-  routes = require("./routes");
+  routes = require("./lib/routes");
 
   app = express();
 

@@ -1,10 +1,10 @@
 async = require "async"
-consts = require "../consts/consts"
+consts = require "./consts"
 mongoose = require "mongoose"
 path = require "path"
-file = require "../helper/file"
+file = require "./file"
 
-logger = require "../helper/logger"
+logger = require "./logger"
 .getLogger "repository"
 
 open = (config_path) ->

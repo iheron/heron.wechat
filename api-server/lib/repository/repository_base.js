@@ -4,15 +4,15 @@
 
   async = require("async");
 
-  consts = require("../consts/consts");
+  consts = require("./consts");
 
   mongoose = require("mongoose");
 
   path = require("path");
 
-  file = require("../helper/file");
+  file = require("./file");
 
-  logger = require("../helper/logger").getLogger("repository");
+  logger = require("./logger").getLogger("repository");
 
   open = function(config_path) {
     var mongo_config, options, uri;
