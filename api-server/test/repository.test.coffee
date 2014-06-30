@@ -1,1 +1,14 @@
-repository_base = require("./require") "repository/repository_base"user_schema = require("./require") "schema/user_schema"consts = require("./require") "consts/consts"assert = require "assert"#rep = new repository_base(consts.MONGODB_CONFIG_PATH)#rep.model = rep.connection.model("user", user_schema)#rep.model.find (err, data)->#  console.log data#console.log "ok"describe "repository_base", ->  describe "#ctor", ->    it "should return -1 when value is not found", ->      assert.equal(-1 , [1..3].indexOf 5)      assert.equal(-1 , [1..3].indexOf 10)
+test_helper = require "./test_helper"
+mongoose = require "mongoose"
+repository_base = test_helper.require "repository/repository_base"
+user_schema = test_helper.require "schema/user_schema"
+consts = test_helper.require "consts/consts"
+
+describe "repository_base", ->
+  describe "#ctor", ->
+    it "should return -1 when value is not found", ->
+      rep = new repository_base(consts.MONGODB_CONFIG_PATH)
+      rep.model = rep.connection.model("user", user_schema)
+
+      rep.save {username: "test",password:"test",age:11},(err)->
+        console.log err
