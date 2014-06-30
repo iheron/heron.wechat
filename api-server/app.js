@@ -8,15 +8,21 @@
 
   log4js_config = require("./config/log4js");
 
-  routes = require("./routes");
+  routes = require("./lib/routes");
 
   app = express();
+
+  app.enable("case sensitive routing");
 
   log4js_config(app);
 
   express_config(app);
 
   routes(app);
+
+  app.use("/demo", function(req, res, next) {
+    return res.send("ok");
+  });
 
   app.use(function(req, res, next) {
     var err;

@@ -1,16 +1,16 @@
 express = require "express"
-#logger = require "morgan"
 path = require "path"
-
+consts = require "./../lib/consts/consts"
 module.exports = (app) ->
   # all
-  # app.use logger("dev")
+
   app.use express.static path.join(__dirname, "../public")
 
   # development
   if "development" == app.get "env"
-    0
+    console.log "run as development.."
+
 
   # production
   if "production" == app.get "env"
-    0
+    console.log "run as production.."

@@ -1,5 +1,4 @@
 async = require "async"
-consts = require "../consts/consts"
 mongoose = require "mongoose"
 path = require "path"
 file = require "../helper/file"

@@ -36,7 +36,9 @@
     for (_j = 0, _len1 = controllers.length; _j < _len1; _j++) {
       controller_arr = controllers[_j];
       controller = require("../controllers/" + controller_arr[1]);
-      router = express.Router();
+      router = express.Router({
+        caseSensitive: true
+      });
       _results.push((function() {
         var _results1;
         _results1 = [];
