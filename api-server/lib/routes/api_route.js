@@ -4,9 +4,11 @@
 
   express = require("express");
 
-  controller = require("./api_controller");
+  controller = require("../controllers/api_controller");
 
-  router = express.Router();
+  router = express.Router({
+    caseSensitive: true
+  });
 
   router.route("/wechat").get(controller.wechat.get).post(controller.wechat.post);
 
@@ -14,4 +16,4 @@
 
 }).call(this);
 
-//# sourceMappingURL=api_route121.map
+//# sourceMappingURL=api_route.map

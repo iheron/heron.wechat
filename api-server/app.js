@@ -12,11 +12,17 @@
 
   app = express();
 
+  app.enable("case sensitive routing");
+
   log4js_config(app);
 
   express_config(app);
 
   routes(app);
+
+  app.use("/demo", function(req, res, next) {
+    return res.send("ok");
+  });
 
   app.use(function(req, res, next) {
     var err;

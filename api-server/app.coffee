@@ -6,13 +6,18 @@ log4js_config = require "./config/log4js"
 routes = require "./lib/routes"
 
 app = express()
+# options
+app.enable "case sensitive routing"
 
 # configuration
 log4js_config app
 express_config app
 
 # route
-routes(app)
+routes app
+
+app.use "/demo", (req,res,next)->
+  res.send "ok"
 
 # 404
 app.use (req, res, next) ->

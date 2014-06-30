@@ -23,7 +23,7 @@ module.exports = (app) ->
   logger.info "load all controller: %j", controllers
   for controller_arr in controllers
     controller = require "../controllers/" + controller_arr[1]
-    router = express.Router()
+    router = express.Router({ caseSensitive: true })
     for action, methods of controller
       for k, v of methods
         switch k
