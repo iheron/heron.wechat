@@ -4,10 +4,10 @@
 
   app = require("../app");
 
-  app.set("port", process.env.PORT || 3000);
+  app.set("port", process.env.PORT || 4000);
 
   server = app.listen(app.get("port"), function() {
-    return console.log("Express server listening on port " + (server.address().port));
+    return console.log("api server listening on port " + (server.address().port));
   });
 
 }).call(this);
