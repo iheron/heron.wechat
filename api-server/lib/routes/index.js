@@ -14,7 +14,7 @@
 
   file = require("../helper/file");
 
-  logger = require("../helper/logger").getLogger("route_index");
+  logger = require("../helper/logger").getLogger("route");
 
   module.exports = function(app) {
     var action, controller, controller_arr, controllers, k, methods, route, route_arr, router, routes, v, _i, _j, _len, _len1, _results;

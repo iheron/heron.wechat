@@ -39,47 +39,82 @@
       router = express.Router({
         caseSensitive: true
       });
-      _results.push((function() {
-        var _results1;
-        _results1 = [];
-        for (action in controller) {
-          methods = controller[action];
-          _results1.push((function() {
-            var _results2;
-            _results2 = [];
-            for (k in methods) {
-              v = methods[k];
-              switch (k) {
-                case "all":
-                  logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
-                  router.all("/" + action, v);
-                  break;
-                case "get":
-                  logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
-                  router.get("/" + action, v);
-                  break;
-                case "post":
-                  logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
-                  router.post("/" + action, v);
-                  break;
-                case "put":
-                  logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
-                  router.put("/" + action, v);
-                  break;
-                case "delete":
-                  logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
-                  router["delete"]("/" + action, v);
-                  break;
-                default:
-                  logger.info("not found method!");
-              }
-              _results2.push(app.use("/" + controller_arr[0], router));
-            }
-            return _results2;
-          })());
+      for (action in controller) {
+        methods = controller[action];
+        for (k in methods) {
+          v = methods[k];
+          switch (k) {
+            case "all":
+              logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
+              router.all("/" + action, v);
+              break;
+            case "get":
+              logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
+              router.get("/" + action, v);
+              break;
+            case "post":
+              logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
+              router.post("/" + action, v);
+              break;
+            case "put":
+              logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
+              router.put("/" + action, v);
+              break;
+            case "delete":
+              logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
+              router["delete"]("/" + action, v);
+              break;
+            default:
+              logger.info("not found method!");
+          }
+          app.use("/" + controller_arr[0], router);
         }
-        return _results1;
-      })());
+      }
+      if (controller_arr[0] === "home") {
+        _results.push((function() {
+          var _results1;
+          _results1 = [];
+          for (action in controller) {
+            methods = controller[action];
+            _results1.push((function() {
+              var _results2;
+              _results2 = [];
+              for (k in methods) {
+                v = methods[k];
+                switch (k) {
+                  case "all":
+                    logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
+                    router.all("/", v);
+                    break;
+                  case "get":
+                    logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
+                    router.get("/", v);
+                    break;
+                  case "post":
+                    logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
+                    router.post("/", v);
+                    break;
+                  case "put":
+                    logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
+                    router.put("/", v);
+                    break;
+                  case "delete":
+                    logger.info("load action: %s -> path: /%s -> method: /%s", action, path.join(controller_arr[0], action), k);
+                    router["delete"]("/", v);
+                    break;
+                  default:
+                    logger.info("not found method!");
+                }
+                _results2.push(app.use("/", router));
+              }
+              return _results2;
+            })());
+          }
+          return _results1;
+        })());
+      } else {
+        _results.push(void 0);
+      }
     }
     return _results;
   };

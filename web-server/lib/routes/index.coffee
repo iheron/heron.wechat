@@ -45,3 +45,27 @@ module.exports = (app) ->
           else
             logger.info "not found method!"
         app.use "/#{controller_arr[0]}", router
+
+    # 默认的主页路由
+    if controller_arr[0] == "home"
+      for action, methods of controller
+        for k, v of methods
+          switch k
+            when "all"
+              logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
+              router.all "/", v
+            when "get"
+              logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
+              router.get "/", v
+            when "post"
+              logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
+              router.post "/", v
+            when "put"
+              logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
+              router.put "/", v
+            when "delete"
+              logger.info "load action: %s -> path: /%s -> method: /%s", action, (path.join controller_arr[0], action), k
+              router.delete "/", v
+            else
+              logger.info "not found method!"
+          app.use "/", router

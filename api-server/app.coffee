@@ -15,7 +15,7 @@ dateFileLog = log4js.getLogger "normal"
 app.use log4js.connectLogger(dateFileLog, { level: "debug", format: ":method :url"})
 
 # all
-app.use express.static path.join(__dirname, "../public")
+app.use express.static path.join(__dirname, "/public")
 
 # development
 if "development" == app.get "env"
@@ -30,9 +30,6 @@ if "production" == app.get "env"
 
 # route
 routes app
-
-app.use "/demo", (req,res,next)->
-  res.send "ok"
 
 # 404
 app.use (req, res, next) ->

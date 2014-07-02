@@ -23,7 +23,7 @@
     format: ":method :url"
   }));
 
-  app.use(express["static"](path.join(__dirname, "../public")));
+  app.use(express["static"](path.join(__dirname, "/public")));
 
   if ("development" === app.get("env")) {
     console.log("run as development..");
@@ -34,10 +34,6 @@
   }
 
   routes(app);
-
-  app.use("/demo", function(req, res, next) {
-    return res.send("ok");
-  });
 
   app.use(function(req, res, next) {
     var err;
