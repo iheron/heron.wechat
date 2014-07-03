@@ -1,8 +1,7 @@
+path = require "path"
 express = require "express"
 
-express_config = require "./config/express"
-log4js_config = require "./config/log4js"
-
+log4js = require "log4js"
 routes = require "./lib/routes"
 
 app = express()
@@ -10,14 +9,27 @@ app = express()
 app.enable "case sensitive routing"
 
 # configuration
-log4js_config app
-express_config app
+log4js.configure "config/log4js.config", {}
+
+dateFileLog = log4js.getLogger "normal"
+app.use log4js.connectLogger(dateFileLog, { level: "debug", format: ":method :url"})
+
+# all
+app.use express.static path.join(__dirname, "/public")
+
+# development
+if "development" == app.get "env"
+  console.log "run as development.."
+
+
+# production
+if "production" == app.get "env"
+  console.log "run as production.."
+
+
 
 # route
 routes app
-
-app.use "/demo", (req,res,next)->
-  res.send "ok"
 
 # 404
 app.use (req, res, next) ->

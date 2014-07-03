@@ -6,7 +6,7 @@ express = require "express"
 file = require "../helper/file"
 
 logger = require "../helper/logger"
-.getLogger("route_index")
+.getLogger("route")
 
 # 如果有路由则使用自定义 否则 使用controllers
 module.exports = (app) ->

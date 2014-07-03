@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    {{> bootstrap_header_link }}
+    {{{yield-header_styles}}}
+    {{{yield-header_scripts}}}
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+{{{ yield }}}
+{{> footer }}
+{{> footer_link }}
+{{> bootstrap_footer_link }}
+<script>
+    $(function () {
+        $(".navbar-collapse").find("li").each(function () {
+            var a = $(this).find("a:first")[0];
+            if ($(a).attr("href") === location.pathname) {
+                $(this).addClass("active");
+            } else {
+                $(this).removeClass("active");
+            }
+        });
+    });
+</script>
+{{{yield-footer_scripts}}}
+</body>
+</html>
