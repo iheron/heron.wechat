@@ -1,9 +1,9 @@
+
 class @login
   @get: (req, res, next) ->
-    res.render "account/login"
+    res.render "account/login",
+      message: req.flash "error"
 
-  @post: (req, res, next) ->
-    res.send "ok"
 
 class @register
   @get: (req, res, next) ->

@@ -3,6 +3,11 @@ express = require "express"
 favicon = require "static-favicon"
 bodyParser = require "body-parser"
 cookieParser = require "cookie-parser"
+session = require "express-session"
+flash = require "connect-flash"
+passport = require "passport"
+LocalStrategy = require "passport-local"
+.Strategy
 
 consts = require "./lib/consts/consts"
 log4js = require "log4js"
@@ -34,7 +39,28 @@ app.use favicon()
 app.use bodyParser.json()
 app.use bodyParser.urlencoded({ extended: true })
 app.use cookieParser(consts.SECRET)
+app.use session({ secret: consts.SECRET })
+app.use flash()
+app.use passport.initialize()
+app.use passport.session()
 app.use express.static path.join(__dirname, "/public")
+passport.use "local", new LocalStrategy (username, password, done) ->
+  user =
+    id: "1"
+    username: "admin"
+    password: "pass"
+  if username != user.username
+    return done null, false, { message: "Incorrect username." }
+  if password != user.password
+    return done null, false, { message: "Incorrect password." }
+  return done null, user
+
+passport.serializeUser (user, done) ->
+  done(null, user)
+
+
+passport.deserializeUser (user, done) ->
+  done(null, user)
 
 # development
 if "development" == app.get "env"

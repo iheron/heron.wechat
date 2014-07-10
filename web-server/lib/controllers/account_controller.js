@@ -4,11 +4,9 @@
     function login() {}
 
     login.get = function(req, res, next) {
-      return res.render("account/login");
-    };
-
-    login.post = function(req, res, next) {
-      return res.send("ok");
+      return res.render("account/login", {
+        message: req.flash("error")
+      });
     };
 
     return login;
