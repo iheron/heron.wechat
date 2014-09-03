@@ -1,0 +1,65 @@
+{
+    "appenders": [
+        {
+            "type": "console"
+        },
+        {
+            "type": "dateFile",
+            "filename": "logs/log",
+            "pattern": "-yyyy-MM-dd.log",
+            "maxLogSize": 20480,
+            "backups": 10,
+            "alwaysIncludePattern": true,
+            "category": "normal"
+        },
+        {
+            "type": "dateFile",
+            "filename": "logs/app-log",
+            "pattern": "-yyyy-MM-dd.log",
+            "maxLogSize": 20480,
+            "backups": 10,
+            "alwaysIncludePattern": true,
+            "category": "app"
+        },
+        {
+            "type": "dateFile",
+            "filename": "logs/repository-log",
+            "pattern": "-yyyy-MM-dd.log",
+            "maxLogSize": 20480,
+            "backups": 10,
+            "alwaysIncludePattern": true,
+            "category": "repository"
+        },
+        {
+            "type": "dateFile",
+            "filename": "logs/controller-log",
+            "pattern": "-yyyy-MM-dd.log",
+            "maxLogSize": 20480,
+            "backups": 10,
+            "alwaysIncludePattern": true,
+            "category": "controller"
+        },
+        {
+            "type": "dateFile",
+            "filename": "logs/route-log",
+            "pattern": "-yyyy-MM-dd.log",
+            "maxLogSize": 20480,
+            "backups": 10,
+            "alwaysIncludePattern": true,
+            "category": "route"
+        },
+        {
+            "type": "dateFile",
+            "filename": "logs/service-log",
+            "pattern": "-yyyy-MM-dd.log",
+            "maxLogSize": 20480,
+            "backups": 10,
+            "alwaysIncludePattern": true,
+            "category": "service"
+        }
+    ],
+    "replaceConsole": true,
+    "levels": {
+        "dateFileLog": "INFO"
+    }
+}
