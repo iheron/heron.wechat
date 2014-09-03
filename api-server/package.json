@@ -6,16 +6,20 @@
         "start": "node ./bin/start"
     },
     "dependencies": {
-        "async": "~0.9.0",
-        "chai": "~1.9.1",
-        "crypto": "~0.0.3",
-        "debug": "~1.0.0",
-        "express": "~4.4.0",
+        "co": "*",
+        "co-views": "*",
+        "hogan.js": "*",
+        "koa": "*",
+        "koa-mount": "*",
+        "koa-router": "*",
+        "koa-static": "*",
+        "lodash": "*",
+        "log4js": "*",
+        "chai": "*",
+        "crypto": "*",
         "jscover": "*",
-        "log4js": "~0.6.14",
-        "moment": "~2.7.0",
-        "mongoose": "~3.8.12",
-        "underscore": "~1.6.0",
-        "xml2js": "~0.4.4"
+        "moment": "*",
+        "mongoose": "*",
+        "xml2js": "*"
     }
 }

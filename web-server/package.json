@@ -1,24 +1,19 @@
 {
-    "name": "web-server",
-    "version": "0.0.1",
-    "private": true,
-    "scripts": {
-        "start": "node ./bin/start"
-    },
-    "dependencies": {
-        "async": "~0.9.0",
-        "chai": "~1.9.1",
-        "crypto": "~0.0.3",
-        "debug": "~1.0.0",
-        "express": "4.x.x",
-        "jscover": "*",
-        "log4js": "*",
-        "moment": "~2.7.0",
-        "mongoose": "~3.8.12",
-        "underscore": "~1.6.0",
-        "static-favicon": "~2.0.0-alpha",
-        "cookie-parser": "~1.3.2",
-        "body-parser": "~1.4.3",
-        "hogan-express": "*"
-    }
+  "name": "web-server",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/start"
+  },
+  "dependencies": {
+    "co": "*",
+    "co-views": "*",
+    "hogan.js": "*",
+    "koa": "*",
+    "koa-mount": "*",
+    "koa-router": "*",
+    "koa-static": "*",
+    "lodash": "*",
+    "log4js": "*"
+  }
 }

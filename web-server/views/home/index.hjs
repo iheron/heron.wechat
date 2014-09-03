@@ -105,3 +105,6 @@
     </div>
     <!--/row-->
 </div>
+        {{#yield-footer_scripts}}
+
+{{/yield-footer_scripts}}
