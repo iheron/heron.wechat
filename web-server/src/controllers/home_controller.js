@@ -5,14 +5,9 @@
     index.displayName = 'index';
     var prototype = index.prototype, constructor = index;
     index.get = function*(){
-      var query, req;
-      query = this.query;
-      req = this.req;
-      console.log(req);
-      this.body = "get in home;query: " + query + " ;  req: " + req;
+      this.body = "get in home;";
     };
     function index(){}
     return index;
   }());
-  module.exports = this;
 }).call(this);

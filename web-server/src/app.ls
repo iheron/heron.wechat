@@ -5,8 +5,9 @@ require! {
   log4js
   'koa-static'
   'koa-mount': mount
-  'koa-router': router
+  'koa-router': koa-router
   'co-views': views
+  'heron-mvc': mvc
 }
 require! {
   './helper/views': views
@@ -16,7 +17,7 @@ app = koa!
 # configuration
 # log4js
 logger = (next) ->*
-  log4js.configure 'config/log4js.config', {}
+  log4js.configure 'configure/log4js.json', {}
   dateFileLog = log4js.getLogger 'normal'
   log4js.connectLogger(dateFileLog, { level: 'debug', format: ':method :url' })
   yield next
@@ -24,7 +25,6 @@ app.use logger
 app.use koa-static path.join __dirname, '../public'
 
 # all
-
 
 # 404
 page-not-found = (next) ->*
@@ -72,9 +72,21 @@ app.on 'error' (err) !->
   console.log err
   return
 
+
+
 # route
-require! './routes/home_route': home
-app.use mount '/home', home.middleware!
+mvc.route.load do
+  route-dir: path.join(__dirname, './routes'),
+  controller-dir: path.join(__dirname, './controllers')
+  , (data) ->
+
+  , (data) ->
+    router = new koa-router!
+    router[data.method] "/#{data.controller}/#{data.action}", data.func
+    if data.controller == 'home' && data.action == 'index'
+      router[data.method] "/", data.func
+    app.use router.middleware!
+
 app.use mount '/demo', ->*
   h = yield render 'home/index', {}
   a = render 'partials/_layout', {title:'home',partials:{footer:'footer'}}
@@ -91,5 +103,6 @@ views.hogan.layout = 'partials/_layout'
 views.hogan.partials = {bootstrap_header_link: '../partials/bootstrap/header_link', footer_link: '../partials/footer_link', header_link: '../partials/header_link', bootstrap_footer_link:'../partials/bootstrap/footer_link'}
 app.use mount '/test', ->*
   @body = yield views.hogan.render 'home/index',{partials:{footer:'../partials/footer'}}
+
 
 module.exports = app
