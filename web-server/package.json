@@ -9,7 +9,7 @@
     "co": "*",
     "co-views": "*",
     "hogan.js": "*",
-    "heron.mvc": "*",
+    "heron-mvc": "*",
     "koa": "*",
     "koa-mount": "*",
     "koa-router": "*",
