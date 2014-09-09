@@ -1,5 +1,7 @@
+require! {
+  '../helper/views': views
+}
+
 class @index
   @get = ->*
-
-    @body = "get in home;"
-
+    @body = yield views.hogan.render 'home/index'

@@ -31,18 +31,22 @@
         layout = ref$;
       }
       partials = {};
-      for (k in ref$ = view.hogan.partials) {
-        v = ref$[k];
-        partials[k] = v;
+      if (view.hogan && view.hogan.partials) {
+        for (k in ref$ = view.hogan.partials) {
+          v = ref$[k];
+          partials[k] = v;
+        }
       }
-      for (k in ref$ = opt.partials) {
-        v = ref$[k];
-        partials[k] = v;
+      if (opt && opt.partials) {
+        for (k in ref$ = opt.partials) {
+          v = ref$[k];
+          partials[k] = v;
+        }
       }
       return function*(){
         var html, opt$, content, tags, yields, i$, len$, item, tag, oTag, cTag, text;
         if (!layout) {
-          html = yield view.hogan(path, opt);
+          html = yield view.hogan(path$, opt);
         } else {
           opt$ = opt || {};
           opt$['yield'] = yield view.hogan(path$, opt$);
@@ -50,13 +54,15 @@
           content = read(opt$.filename);
           tags = content.match(/({{#yield-\w+}})/g);
           yields = {};
-          for (i$ = 0, len$ = tags.length; i$ < len$; ++i$) {
-            item = tags[i$];
-            tag = item.match(/{{#([\w-]+)}}/)[1];
-            oTag = "{{#" + tag + "}}";
-            cTag = "{{/" + tag + "}}";
-            text = content.substring(content.indexOf(oTag) + oTag.length, content.indexOf(cTag));
-            yields[tag.replace('yield-', '')] = text;
+          if (tags) {
+            for (i$ = 0, len$ = tags.length; i$ < len$; ++i$) {
+              item = tags[i$];
+              tag = item.match(/{{#([\w-]+)}}/)[1];
+              oTag = "{{#" + tag + "}}";
+              cTag = "{{/" + tag + "}}";
+              text = content.substring(content.indexOf(oTag) + oTag.length, content.indexOf(cTag));
+              yields[tag.replace('yield-', '')] = text;
+            }
           }
           opt$.yields = yields;
           html = yield view.hogan(layout, opt$);

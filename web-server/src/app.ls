@@ -6,10 +6,7 @@ require! {
   'koa-static'
   'koa-mount': mount
   'koa-router': koa-router
-  'co-views': views
   'heron-mvc': mvc
-}
-require! {
   './helper/views': views
 }
 app = koa!
@@ -34,7 +31,7 @@ page-not-found = (next) ->*
   switch (@accepts 'html', 'json')
   | 'html' =>
     @type = 'html'
-    @body = 'Page Not Found'
+    @body = yield views.hogan.render 'error/404'
   | 'json' =>
     @body =
       message: 'Page Not Found'
@@ -50,31 +47,33 @@ if 'development' == app.env
     try
       yield next
     catch e
-      @status = e.status || 500
+      e.status ?= 500
+      @status = e.status
       @type = 'html'
-      @body = 'error 500'
+      @body = yield views.hogan.render 'error/500', do
+        message: error.message
+        error: e
       @app.emit 'error', e, @
   app.use error
 
 if 'production' == app.env
-  0
+  error = (next) ->*
+    try
+      yield next
+    catch e
+      @status = e.status || 500
+      @type = 'html'
+      @body = yield views.hogan.render 'error/404', do
+          e
+      @app.emit 'error', e, @
+    app.use error
 
-error = (next) ->*
-  try
-    yield next
-  catch e
-    @status = e.status || 500
-    @type = 'html'
-    @body = 'error 500'
-    @app.emit 'error', e, @
-app.use error
 app.on 'error' (err) !->
   console.log err
   return
 
-
-
 # route
+views.hogan.layout = 'partials/_layout'
 mvc.route.load do
   route-dir: path.join(__dirname, './routes'),
   controller-dir: path.join(__dirname, './controllers')
@@ -99,8 +98,6 @@ app.use mount '/demo', ->*
   html = html.join '\n'
   @body = html
 
-views.hogan.layout = 'partials/_layout'
-views.hogan.partials = {bootstrap_header_link: '../partials/bootstrap/header_link', footer_link: '../partials/footer_link', header_link: '../partials/header_link', bootstrap_footer_link:'../partials/bootstrap/footer_link'}
 app.use mount '/test', ->*
   @body = yield views.hogan.render 'home/index',{partials:{footer:'../partials/footer'}}
 

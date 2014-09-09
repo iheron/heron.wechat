@@ -1,110 +1,451 @@
-{{#yield-header_styles}}
-<link rel="stylesheet" href="stylesheets/layout.css"/>
-{{/yield-header_styles}}
+<div class="content">
 
-<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">主页</a>
-        </div>
+<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="/">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
+<div id="portlet-config" class="modal hide">
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+    <div class="modal-header">
+
+        <button data-dismiss="modal" class="close" type="button"></button>
+
+        <h3>portlet Settings</h3>
+
     </div>
-    <!-- /.container-fluid -->
-</nav>
-<div class="container">
-    <div class="jumbotron">
-        <h1>北航学习助手
-            <small>一站式学习社区</small>
-        </h1>
-        <p>暂时只提供632211班的服务</p>
+
+    <div class="modal-body">
+
+        <p>Here will be a configuration form</p>
+
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="/images/qrcode_430.jpg" alt="...">
 
-                <div class="caption">
-                    <h3>点鸡..不。扫一扫添加订阅号</h3>
-
-                    <p>订阅后微信助手后，能提供更多的服务。推送课程，一键登录...</p>
-
-                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img data-src="" alt="...">
-
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-
-                    <p>...</p>
-
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
-                                                                                       role="button">Button</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img data-src="" alt="...">
-
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-
-                    <p>...</p>
-
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
-                                                                                       role="button">Button</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/row-->
 </div>
-        {{#yield-footer_scripts}}
 
-{{/yield-footer_scripts}}
+<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+<!-- BEGIN PAGE CONTAINER-->
+
+<div class="container-fluid">
+
+<!-- BEGIN PAGE CONTENT-->
+
+<div class="tiles">
+
+<div class="tile bg-green">
+
+    <div class="tile-body">
+
+        <i class="icon-calendar"></i>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Curriculum
+
+        </div>
+
+        <div class="number">
+
+            New
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile double-down bg-blue">
+
+    <div class="tile-body">
+
+        <i class="icon-bell"></i>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Notifications
+
+        </div>
+
+        <div class="number">
+
+            6
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="tile double selected bg-blue">
+
+    <div class="corner"></div>
+
+    <div class="check"></div>
+
+    <div class="tile-body">
+
+        <h4>support@metronic.com</h4>
+
+        <p>Re: Metronic v1.2 - Project Update!</p>
+
+        <p>24 March 2013 12.30PM confirmed for the project plan update meeting...</p>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            <i class="icon-envelope"></i>
+
+        </div>
+
+        <div class="number">
+
+            14
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile selected bg-red">
+
+    <div class="corner"></div>
+
+    <div class="tile-body">
+
+        <i class="icon-user"></i>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Members
+
+        </div>
+
+        <div class="number">
+
+            452
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile double bg-purple">
+
+    <div class="tile-body">
+
+        <img src="media/image/photo1.jpg" alt="">
+
+        <h3>Announements</h3>
+
+        <p>
+
+            Easily style icon color, size, shadow, and anything that's possible with CSS.
+
+        </p>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Bob Nilson
+
+        </div>
+
+        <div class="number">
+
+            24 Jan 2013
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile bg-yellow">
+
+    <div class="tile-body">
+
+        <i class="icon-shopping-cart"></i>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Orders
+
+        </div>
+
+        <div class="number">
+
+            121
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile image selected">
+
+    <div class="tile-body">
+
+        <img src="media/image/image2.jpg" alt="">
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Media
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile bg-green">
+
+    <div class="tile-body">
+
+        <i class="icon-comments-alt"></i>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Feedback
+
+        </div>
+
+        <div class="number">
+
+            12
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile double bg-grey">
+
+    <div class="tile-body">
+
+        <img src="media/image/photo2.jpg" alt="" class="pull-right">
+
+        <h3>@lisa_wong</h3>
+
+        <p>
+
+            I really love this theme. I look forward to check the next release!
+
+        </p>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            <i class="icon-twitter"></i>
+
+        </div>
+
+        <div class="number">
+
+            10:45PM, 23 Jan
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile bg-blue">
+
+    <div class="tile-body">
+
+        <i class="icon-coffee"></i>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Meetups
+
+        </div>
+
+        <div class="number">
+
+            12 Jan
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile bg-green">
+
+    <div class="tile-body">
+
+        <i class="icon-bar-chart"></i>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Reports
+
+        </div>
+
+        <div class="number">
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile bg-purple">
+
+    <div class="tile-body">
+
+        <i class="icon-briefcase"></i>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Documents
+
+        </div>
+
+        <div class="number">
+
+            124
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile image double selected">
+
+    <div class="tile-body">
+
+        <img src="media/image/image4.jpg" alt="">
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Gallery
+
+        </div>
+
+        <div class="number">
+
+            124
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile bg-yellow selected">
+
+    <div class="corner"></div>
+
+    <div class="check"></div>
+
+    <div class="tile-body">
+
+        <i class="icon-cogs"></i>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Settings
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tile bg-purple">
+
+    <div class="tile-body">
+
+        <i class="icon-plane"></i>
+
+    </div>
+
+    <div class="tile-object">
+
+        <div class="name">
+
+            Projects
+
+        </div>
+
+        <div class="number">
+
+            34
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<br>
+
+<!-- END PAGE CONTENT-->
+
+</div>
+
+<!-- END PAGE CONTAINER-->
+
+</div>
