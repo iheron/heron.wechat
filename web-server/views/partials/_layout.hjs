@@ -1,35 +1,93 @@
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="utf-8"/>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <meta content="" name="description"/>
+
+    <meta content="" name="author"/>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END GLOBAL MANDATORY STYLES -->
     <title>{{ title }}</title>
-    {{> bootstrap_header_link }}
     {{{yields.header_styles}}}
     {{{yields.header_scripts}}}
-    <!--[if lt IE 9]>
-    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
 </head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
 <body>
-{{{ yield }}}
+
+
+<!-- BEGIN CONTAINER -->
+
+<div class="container row-fluid">
+
+
+    <!-- BEGIN PAGE -->
+
+    {{{ yield }}}
+
+    <!-- END PAGE -->
+
+</div>
+
+<!-- END CONTAINER -->
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<!-- BEGIN CORE PLUGINS -->
+
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
 {{> footer }}
+
+<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+
+<script src="media/js/excanvas.min.js"></script>
+
+<script src="media/js/respond.min.js"></script>
+
+<![endif]-->
+
 {{> footer_link }}
-{{> bootstrap_footer_link }}
-<script>
-    $(function () {
-        $(".navbar-collapse").find("li").each(function () {
-            var a = $(this).find("a:first")[0];
-            if ($(a).attr("href") === location.pathname) {
-                $(this).addClass("active");
-            } else {
-                $(this).removeClass("active");
-            }
-        });
-    });
-</script>
 {{{yields.footer_scripts}}}
 </body>
+
+<!-- END BODY -->
+
 </html>
