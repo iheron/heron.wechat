@@ -150,7 +150,7 @@
 
     <div class="tile-body">
 
-        <img src="media/image/photo1.jpg" alt="">
+        <img src="/media/image/photo1.jpg" alt="">
 
         <h3>Announements</h3>
 
@@ -210,7 +210,7 @@
 
     <div class="tile-body">
 
-        <img src="media/image/image2.jpg" alt="">
+        <img src="/media/image/image2.jpg" alt="">
 
     </div>
 
@@ -256,7 +256,7 @@
 
     <div class="tile-body">
 
-        <img src="media/image/photo2.jpg" alt="" class="pull-right">
+        <img src="/media/image/photo2.jpg" alt="" class="pull-right">
 
         <h3>@lisa_wong</h3>
 
@@ -366,7 +366,7 @@
 
     <div class="tile-body">
 
-        <img src="media/image/image4.jpg" alt="">
+        <img src="/media/image/image4.jpg" alt="">
 
     </div>
 
