@@ -31,7 +31,7 @@
 <div class="tiles">
 
 <div class="tile bg-green">
-
+    <a href="/curriculum/list">
     <div class="tile-body">
 
         <i class="icon-calendar"></i>
@@ -53,7 +53,7 @@
         </div>
 
     </div>
-
+    </a>
 </div>
 
 <div class="tile double-down bg-blue">
