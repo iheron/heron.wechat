@@ -13,7 +13,7 @@
         this.body = '';
       } else {
         this.status = 200;
-        this.body = req.query.echostr;
+        this.body = this.request.query.echostr;
       }
     };
     function wechat(){}
