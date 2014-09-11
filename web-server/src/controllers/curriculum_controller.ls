@@ -1,5 +1,5 @@
 require! {
-  '../helper/views': views
+  '../helpers/views': views
 }
 
 class @list
