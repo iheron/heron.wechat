@@ -12,12 +12,13 @@ app = koa!
 
 # configuration
 # log4js
-logger = (next) ->*
-  log4js.configure 'configure/log4js.json', {}
-  dateFileLog = log4js.getLogger 'normal'
-  log4js.connectLogger(dateFileLog, { level: 'debug', format: ':method :url' })
+log4js.configure 'configure/log4js.json', {}
+logger = log4js.getLogger 'normal'
+log4js-middleware = (next) ->*
+  log4js.connectLogger(logger, { level: 'debug', format: ':method :url' })
+  logger.debug "#{@request.method} #{@request.url}"
   yield next
-app.use logger
+app.use log4js-middleware
 app.use koa-static path.join __dirname, '../public'
 
 # all
