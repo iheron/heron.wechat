@@ -13,3 +13,7 @@ class @wechat
     else
       @status = 200
       @body = @request.query.echostr
+
+
+  @post = ->*
+    @body = 'post...................................wechat'
