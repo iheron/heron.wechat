@@ -12,4 +12,4 @@ class @wechat
       @body = ''
     else
       @status = 200
-      @body = req.query.echostr
+      @body = @request.query.echostr
