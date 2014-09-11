@@ -16,6 +16,9 @@
         this.body = this.request.query.echostr;
       }
     };
+    wechat.post = function*(){
+      this.body = 'post...................................wechat';
+    };
     function wechat(){}
     return wechat;
   }());
