@@ -1,25 +1,26 @@
 {
-    "name": "heron.wechat_api-server",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "start": "node ./bin/start"
-    },
-    "dependencies": {
-        "co": "*",
-        "co-views": "*",
-        "hogan.js": "*",
-        "koa": "*",
-        "koa-mount": "*",
-        "koa-router": "*",
-        "koa-static": "*",
-        "lodash": "*",
-        "log4js": "*",
-        "chai": "*",
-        "crypto": "*",
-        "jscover": "*",
-        "moment": "*",
-        "mongoose": "*",
-        "xml2js": "*"
-    }
+  "name": "heron.wechat_api-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/start"
+  },
+  "dependencies": {
+    "chai": "*",
+    "co": "*",
+    "co-views": "*",
+    "crypto": "*",
+    "heron-mvc": "*",
+    "hogan.js": "*",
+    "jscover": "*",
+    "koa": "*",
+    "koa-mount": "*",
+    "koa-router": "*",
+    "koa-static": "*",
+    "lodash": "*",
+    "log4js": "*",
+    "moment": "*",
+    "mongoose": "*",
+    "xml2js": "*"
+  }
 }

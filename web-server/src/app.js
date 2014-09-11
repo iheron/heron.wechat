@@ -9,7 +9,7 @@
   mount = require('koa-mount');
   koaRouter = require('koa-router');
   mvc = require('heron-mvc');
-  views = require('./helper/views');
+  views = require('./helpers/views');
   app = koa();
   logger = function*(next){
     var dateFileLog;
@@ -73,11 +73,13 @@
         e = e$;
         this.status = e.status || 500;
         this.type = 'html';
-        this.body = yield views.hogan.render('error/404', e);
+        this.body = yield views.hogan.render('error/500', {
+          message: error.message
+        });
         this.app.emit('error', e, this);
       }
-      app.use(error);
     };
+    app.use(error);
   }
   app.on('error', function(err){
     console.log(err);

@@ -10,7 +10,7 @@
     function index(){}
     return index;
   }());
-  test = (function(){
+  this.test = test = (function(){
     test.displayName = 'test';
     var prototype = test.prototype, constructor = test;
     test.get = function*(){
@@ -19,5 +19,4 @@
     function test(){}
     return test;
   }());
-  module.exports = this;
 }).call(this);

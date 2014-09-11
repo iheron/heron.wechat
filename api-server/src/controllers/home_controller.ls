@@ -2,8 +2,6 @@ class @index
   @get = ->*
     @body = 'ok'
 
-class test
+class @test
   @get = ->*
     @body = 'this is test page'
-
-module.exports = @

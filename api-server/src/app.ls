@@ -5,22 +5,22 @@ require! {
   log4js
   'koa-static'
   'koa-mount': mount
-  'koa-router': router
-  'co-views': views
+  'koa-router': koa-router
   'heron-mvc': mvc
 }
-logger = require './helpers/logger'
-.getLogger 'app'
 app = koa!
-console.log process
+
 # configuration
 # log4js
-log4js.configure 'config/log4js.json', {}
-dateFileLog = log4js.getLogger 'normal'
-log4js.connectLogger(dateFileLog, { level: 'debug', format: ':method :url' })
+logger = (next) ->*
+  log4js.configure 'configure/log4js.json', {}
+  dateFileLog = log4js.getLogger 'normal'
+  log4js.connectLogger(dateFileLog, { level: 'debug', format: ':method :url' })
+  yield next
+app.use logger
+app.use koa-static path.join __dirname, '../public'
 
 # all
-app.use koa-static path.join __dirname, '../public'
 
 # 404
 page-not-found = (next) ->*
@@ -52,19 +52,31 @@ if 'development' == app.env
   app.use error
 
 if 'production' == app.env
-  0
-
-error = (next) ->*
-  try
-    yield next
-  catch e
-    @status = e.status || 500
-    @type = 'html'
-    @body = 'error 500'
-    @app.emit 'error', e, @
-app.use error
+  error = (next) ->*
+    try
+      yield next
+    catch e
+      @status = e.status || 500
+      @type = 'html'
+      @body = 'error 500'
+      @app.emit 'error', e, @
+  app.use error
 app.on 'error' (err) !->
   logger.error err
   return
+
+# route
+
+mvc.route.load do
+  route-dir: path.join(__dirname, './routes'),
+  controller-dir: path.join(__dirname, './controllers')
+  , (data) ->
+
+  , (data) ->
+    router = new koa-router!
+    router[data.method] "/#{data.controller}/#{data.action}", data.func
+    if data.controller == 'home' && data.action == 'index'
+      router[data.method] "/", data.func
+    app.use router.middleware!
 
 module.exports = app

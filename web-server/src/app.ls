@@ -7,7 +7,7 @@ require! {
   'koa-mount': mount
   'koa-router': koa-router
   'heron-mvc': mvc
-  './helper/views': views
+  './helpers/views': views
 }
 app = koa!
 
@@ -63,10 +63,10 @@ if 'production' == app.env
     catch e
       @status = e.status || 500
       @type = 'html'
-      @body = yield views.hogan.render 'error/404', do
-          e
+      @body = yield views.hogan.render 'error/500', do
+          message: error.message
       @app.emit 'error', e, @
-    app.use error
+  app.use error
 
 app.on 'error' (err) !->
   console.log err
