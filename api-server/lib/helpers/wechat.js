@@ -172,6 +172,9 @@
         return next(parseJson(xml));
       });
     };
+    prototype.parseMsg = function(data){
+      return parseXml(data);
+    };
     return wechat;
   }());
   module.exports = function(token){
