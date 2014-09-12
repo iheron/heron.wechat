@@ -180,4 +180,7 @@ class wechat
     req.on "end", ->
       next parseJson(xml)
 
+  parseMsg: (data) ->
+    parseXml data
+
 module.exports = (token) -> new wechat token
