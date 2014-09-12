@@ -18,19 +18,7 @@
     };
     wechat.post = function*(){
       logger.info('------------------ post api/wechat ----------------------');
-      if (!helperWechat.checkSignature(this.request.query)) {
-        logger.info('------------------ api/wechat auth no ----------------------');
-        this.status = 200;
-        this.body = '';
-      } else {
-        logger.info('------------------ api/wechat auth yes ----------------------');
-        this.status = 200;
-        helperWechat.getMsg(this.req, function(data){
-          return logger.info(data);
-        });
-        helperWechat.all(function(data){}).text(function(data){});
-        this.body = 'default ok';
-      }
+      this.body = 'post';
     };
     function wechat(){}
     return wechat;
