@@ -16,10 +16,13 @@ class @wechat
 
 
   @post = ->*
+    logger.info '------------------ post api/wechat ----------------------'
     if !helper-wechat.check-signature @request.query
+      logger.info '------------------ api/wechat auth no ----------------------'
       @status = 200
       @body = ''
     else
+      logger.info '------------------ api/wechat auth yes ----------------------'
       @status = 200
       helper-wechat.getMsg @req, (data) ->
         logger.info data
