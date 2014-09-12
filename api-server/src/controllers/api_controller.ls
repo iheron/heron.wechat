@@ -27,6 +27,8 @@ class @wechat
       helper-wechat.getMsg @req, (data) ->
         logger.info data
 
+      results = undefined
+
       helper-wechat
       .all (data) ->
       .text (data) ->
