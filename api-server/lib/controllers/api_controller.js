@@ -27,14 +27,24 @@
         logger.info('------------------ api/wechat auth yes ----------------------');
         this.status = 200;
         data = yield function(done){
-          helperWechat.getMsg(this.req, function(data){});
-          logger.info(data);
+          helperWechat.getMsg(this.req, function(data){
+            return logger.info(data);
+          });
           return helperWechat.all(function(data){}).text(function(data){
             var msg, results;
             msg = {
               FromUserName: data.ToUserName,
               ToUserName: data.FromUserName,
               Content: ">>> " + data.Content + " <<<"
+            };
+            results = helperWechat.parseMsg(msg);
+            return done(null, results);
+          }).image(function(data){
+            var msg, results;
+            msg = {
+              FromUserName: data.ToUserName,
+              ToUserName: data.FromUserName,
+              Content: "这是一个图片"
             };
             results = helperWechat.parseMsg(msg);
             return done(null, results);
