@@ -24,16 +24,18 @@ class @wechat
     else
       logger.info '------------------ api/wechat auth yes ----------------------'
       @status = 200
-      helper-wechat.getMsg @req, (data) ->
+
+      data = yield (done) ->
+        helper-wechat.getMsg @req, (data) ->
         logger.info data
+        helper-wechat
+        .all (data) ->
+        .text (data) ->
+          msg =
+            FromUserName: data.ToUserName
+            ToUserName: data.FromUserName
+            Content: ">>> #{ data.Content } <<<"
+          results = helper-wechat.parseMsg msg
+          done null, results
 
-
-      helper-wechat
-      .all (data) ->
-      .text (data) ->
-        msg =
-          FromUserName: data.ToUserName
-          ToUserName: data.FromUserName
-          Content: ">>> #{ data.Content } <<<"
-        results = helper-wechat.parseMsg msg
-        helper-wechat.send @res, results
+      @body = data

@@ -17,6 +17,7 @@
       }
     };
     wechat.post = function*(){
+      var data;
       logger.info('------------------ post api/wechat ----------------------');
       if (!helperWechat.checkSignature(this.request.query)) {
         logger.info('------------------ api/wechat auth no ----------------------');
@@ -25,19 +26,21 @@
       } else {
         logger.info('------------------ api/wechat auth yes ----------------------');
         this.status = 200;
-        helperWechat.getMsg(this.req, function(data){
-          return logger.info(data);
-        });
-        helperWechat.all(function(data){}).text(function(data){
-          var msg, results;
-          msg = {
-            FromUserName: data.ToUserName,
-            ToUserName: data.FromUserName,
-            Content: ">>> " + data.Content + " <<<"
-          };
-          results = helperWechat.parseMsg(msg);
-          return helperWechat.send(this.res, results);
-        });
+        data = yield function(done){
+          helperWechat.getMsg(this.req, function(data){});
+          logger.info(data);
+          return helperWechat.all(function(data){}).text(function(data){
+            var msg, results;
+            msg = {
+              FromUserName: data.ToUserName,
+              ToUserName: data.FromUserName,
+              Content: ">>> " + data.Content + " <<<"
+            };
+            results = helperWechat.parseMsg(msg);
+            return done(null, results);
+          });
+        };
+        this.body = data;
       }
     };
     function wechat(){}
