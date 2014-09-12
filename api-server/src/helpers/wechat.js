@@ -175,6 +175,12 @@
     prototype.parseMsg = function(data){
       return parseXml(data);
     };
+    prototype.send = function(res, data){
+      res.writeHead(200, {
+        'Content-Type': 'text/plain'
+      });
+      return res.end(parseXml(data));
+    };
     return wechat;
   }());
   module.exports = function(token){
