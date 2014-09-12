@@ -16,14 +16,10 @@
     test.displayName = 'test';
     var prototype = test.prototype, constructor = test;
     test.get = function*(){
-      var redis, data;
-      redis = new redisClient();
-      data = yield function(done){
-        return redis.keys('*', function(err, data){
-          return done(err, [data[1], data[2], data[3]]);
-        });
-      };
-      this.body = data;
+      this.res.writeHead(200, {
+        'Content-Type': 'text/plain'
+      });
+      this.res.end('ok121');
     };
     function test(){}
     return test;
