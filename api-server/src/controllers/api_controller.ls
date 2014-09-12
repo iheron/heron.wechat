@@ -17,18 +17,17 @@ class @wechat
 
   @post = ->*
     logger.info '------------------ post api/wechat ----------------------'
-    @body = 'post'
-#    if !helper-wechat.check-signature @request.query
-#      logger.info '------------------ api/wechat auth no ----------------------'
-#      @status = 200
-#      @body = ''
-#    else
-#      logger.info '------------------ api/wechat auth yes ----------------------'
-#      @status = 200
-#      helper-wechat.getMsg @req, (data) ->
-#        logger.info data
-#
-#      helper-wechat
-#      .all (data) ->
-#      .text (data) ->
-#      @body = 'default ok'
+    if !helper-wechat.check-signature @request.query
+      logger.info '------------------ api/wechat auth no ----------------------'
+      @status = 200
+      @body = ''
+    else
+      logger.info '------------------ api/wechat auth yes ----------------------'
+      @status = 200
+      helper-wechat.getMsg @req, (data) ->
+        logger.info data
+
+      helper-wechat
+      .all (data) ->
+      .text (data) ->
+      @body = 'default ok'
