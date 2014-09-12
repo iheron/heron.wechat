@@ -27,7 +27,7 @@ class @wechat
       helper-wechat.getMsg @req, (data) ->
         logger.info data
 
-      results = ''
+
       helper-wechat
       .all (data) ->
       .text (data) ->
@@ -36,4 +36,4 @@ class @wechat
           ToUserName: data.FromUserName
           Content: ">>> #{ data.Content } <<<"
         results = helper-wechat.parseMsg msg
-      @body = results
+        helper-wechat.send @res, results
