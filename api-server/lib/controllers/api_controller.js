@@ -3,7 +3,7 @@
   var consts, helperWechat, logger, wechat;
   consts = require('../consts');
   helperWechat = require('../helpers/wechat')(consts.WECHAT_TOKEN);
-  logger = require("../helpers/logger").getLogger("controller");
+  logger = require('../helpers/logger').getLogger('controller');
   this.wechat = wechat = (function(){
     wechat.displayName = 'wechat';
     var prototype = wechat.prototype, constructor = wechat;
@@ -17,7 +17,17 @@
       }
     };
     wechat.post = function*(){
-      this.body = 'post...................................wechat';
+      if (!helperWechat.checkSignature(this.request.query)) {
+        this.status = 200;
+        this.body = '';
+      } else {
+        this.status = 200;
+        helperWechat.getMsg(this.req, function(data){
+          return logger.info(data);
+        });
+        helperWechat.all(function(data){}).text(function(data){});
+        this.body = 'default ok';
+      }
     };
     function wechat(){}
     return wechat;
