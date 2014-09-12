@@ -67,17 +67,16 @@ app.on 'error' (err) !->
   return
 
 # route
-
+router = new koa-router!
 mvc.route.load do
   route-dir: path.join(__dirname, './routes'),
   controller-dir: path.join(__dirname, './controllers')
   , (data) ->
 
   , (data) ->
-    router = new koa-router!
-    router[data.method] "/#{data.controller}/#{data.action}", data.func
+    router.[data.method] "/#{data.controller}/#{data.action}", data.func
     if data.controller == 'home' && data.action == 'index'
-      router[data.method] "/", data.func
-    app.use router.middleware!
+      router.[data.method] "/", data.func
+app.use router.middleware!
 
 module.exports = app
