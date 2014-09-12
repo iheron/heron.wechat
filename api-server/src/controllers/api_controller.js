@@ -17,6 +17,7 @@
       }
     };
     wechat.post = function*(){
+      var results;
       logger.info('------------------ post api/wechat ----------------------');
       if (!helperWechat.checkSignature(this.request.query)) {
         logger.info('------------------ api/wechat auth no ----------------------');
@@ -28,6 +29,7 @@
         helperWechat.getMsg(this.req, function(data){
           return logger.info(data);
         });
+        results = '';
         helperWechat.all(function(data){}).text(function(data){
           var msg, results;
           msg = {
@@ -35,9 +37,9 @@
             ToUserName: data.FromUserName,
             Content: ">>> " + data.Content + " <<<"
           };
-          results = helperWechat.parseMsg(msg);
-          return this.body = results || 'defluat';
+          return results = helperWechat.parseMsg(msg);
         });
+        this.body = results;
       }
     };
     function wechat(){}

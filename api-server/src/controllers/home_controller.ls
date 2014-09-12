@@ -8,12 +8,6 @@ class @index
 
 class @test
   @get = ->*
-    redis = new redis-client!
-
-    data = yield (done) -> redis.keys '*', (err, data) ->
-      done err, data.[1 to 3]
-
-
-
-    @body = data
+    @res.writeHead(200, {'Content-Type': 'text/plain'})
+    @res.end 'ok121'
 
