@@ -30,4 +30,9 @@ class @wechat
       helper-wechat
       .all (data) ->
       .text (data) ->
-      @body = 'default ok'
+        msg =
+          FromUserName: data.ToUserName
+          ToUserName: data.FromUserName
+          Content: ">>> #{ data.Content } <<<"
+        results = helper-wechat.parseMsg msg
+      @body = results || 'defluat'

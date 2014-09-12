@@ -28,8 +28,16 @@
         helperWechat.getMsg(this.req, function(data){
           return logger.info(data);
         });
-        helperWechat.all(function(data){}).text(function(data){});
-        this.body = 'default ok';
+        helperWechat.all(function(data){}).text(function(data){
+          var msg, results;
+          msg = {
+            FromUserName: data.ToUserName,
+            ToUserName: data.FromUserName,
+            Content: ">>> " + data.Content + " <<<"
+          };
+          return results = helperWechat.parseMsg(msg);
+        });
+        this.body = results || 'defluat';
       }
     };
     function wechat(){}
