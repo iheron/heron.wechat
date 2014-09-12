@@ -21,6 +21,7 @@
     "log4js": "*",
     "moment": "*",
     "mongoose": "*",
+    "redis": "*",
     "xml2js": "*"
   }
 }
