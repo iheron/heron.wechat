@@ -1,5 +1,7 @@
 require!{
+  co
   '../consts'
+  '../helpers/flash'
 }
 helper-wechat = require '../helpers/wechat' <| consts.WECHAT_TOKEN
 logger = require '../helpers/logger'
@@ -16,7 +18,6 @@ class @wechat
 
 
   @post = ->*
-    logger.info '------------------ post api/wechat ----------------------'
     if !helper-wechat.check-signature @request.query
       logger.info '------------------ api/wechat auth no ----------------------'
       @status = 200
@@ -24,13 +25,15 @@ class @wechat
     else
       logger.info '------------------ api/wechat auth yes ----------------------'
       @status = 200
-
       data = yield (done) ->
         helper-wechat.getMsg @req, (data) ->
           logger.info data
         helper-wechat
         .all (data) ->
         .text (data) ->
+          co flash.yield-is-exists data.MsgId
+          <| (err, flag) ->
+            return done null, '' if flag
           msg =
             FromUserName: data.ToUserName
             ToUserName: data.FromUserName
