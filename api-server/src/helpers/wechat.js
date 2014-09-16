@@ -5,6 +5,7 @@
   xml2js = require('xml2js');
   events = require('events');
   emitter = new events.EventEmitter();
+  emitter.setMaxListeners(0);
   parseJson = function(xml){
     var msg;
     msg = {};

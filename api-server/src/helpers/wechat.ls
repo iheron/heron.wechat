@@ -4,7 +4,7 @@ require!{
   events
 }
 emitter = new events.EventEmitter()
-
+emitter.setMaxListeners 0
 parseJson = (xml) ->
   msg = {}
   xml2js.parseString xml, (err, result) !->
