@@ -2,7 +2,7 @@
     "host": "127.0.0.1",
     "port": "27017",
     "database": "heron_wechat",
-    "username": "",
-    "password": "",
+    "username": "heron",
+    "password": "123456",
     "poolsize": 10
 }
