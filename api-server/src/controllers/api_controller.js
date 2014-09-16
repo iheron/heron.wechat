@@ -19,7 +19,7 @@
       }
     };
     wechat.post = function*(){
-      var data;
+      var xml;
       if (!helperWechat.checkSignature(this.request.query)) {
         logger.info('------------------ api/wechat auth no ----------------------');
         this.status = 200;
@@ -27,7 +27,7 @@
       } else {
         logger.info('------------------ api/wechat auth yes ----------------------');
         this.status = 200;
-        data = yield function(done){
+        xml = yield function(done){
           helperWechat.getMsg(this.req, function(data){
             return logger.info(data);
           });
@@ -54,9 +54,37 @@
             };
             results = helperWechat.parseMsg(msg);
             return done(null, results);
+          }).event(function(data){
+            var msg, results;
+            co(flash.yieldIsExists(data.FromUserName + "" + data.CreateTime))(function(err, flag){
+              if (flag) {
+                return done(null, '');
+              }
+            });
+            switch (data.Event) {
+            case 'subscribe':
+              msg = {
+                FromUserName: data.ToUserName,
+                ToUserName: data.FromUserName,
+                Content: '订阅成功!'
+              };
+              results = helperWechat.parseMsg(msg);
+              return done(null, results);
+            case 'unsubscribe':
+              msg = {
+                FromUserName: data.ToUserName,
+                ToUserName: data.FromUserName,
+                Content: '您取消了订阅'
+              };
+              results = helperWechat.parseMsg(msg);
+              return done(null, results);
+            default:
+              logger.info("has no event " + data.Event);
+              return done(null, '');
+            }
           });
         };
-        this.body = data;
+        this.body = xml;
       }
     };
     function wechat(){}

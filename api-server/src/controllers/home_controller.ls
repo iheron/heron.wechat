@@ -3,6 +3,7 @@ require!{
   '../consts'
   '../helpers/redis': redis-client
   '../helpers/flash'
+  '../repositories/setting_repository'
 }
 class @index
   @get = ->*
@@ -10,24 +11,5 @@ class @index
 
 class @test
   @get = ->*
-#    redis = new redis-client!
-#    id = @request.query.id
-##    data = yield (done) -> redis.keys '*', (err, data) ->
-##      done err, data.[1 to 3]
-#
-#    isexists = yield (done) -> redis.exists id, (err, data) -> done err, data
-#
-#    if isexists
-#      data = isexists + '........... isd'
-#    else
-#      data = yield (done) -> redis.set id, 'value', (err, flag) ->
-#        if 'OK' == flag
-#          redis.expire id, 10, (err, flag) ->
-#            done err, flag
-
-
-    @body = yield (done) ->
-      co flash.yield-is-exists @request.query.id, 3
-      <| (err, res) ->
-        done err, res
-
+    rep = new setting_repository!
+    @body = yield (done) -> rep.findAll done
