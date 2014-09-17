@@ -137,35 +137,35 @@ class wechat
 
   all: (next) ~>
     @events.all = next
-    @events
+    @
 
   text: (next) ~>
     @events.text = next
-    @events
+    @
 
   image: (next) ~>
     @events.image = next
-    @events
+    @
 
   location: (next) ~>
     @events.location = next
-    @events
+    @
 
   link: (next) ~>
     @events.link = next
-    @events
+    @
 
   event: (next) ~>
     @events.event = next
-    @events
+    @
 
   voice: (next) ~>
     @events.voice = next
-    @events
+    @
 
   video: (next) ~>
     @events.video = next
-    @events
+    @
 
   getMsg: (req, next) ->
     xml = ''
