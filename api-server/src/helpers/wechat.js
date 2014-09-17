@@ -127,6 +127,7 @@
     var prototype = wechat.prototype, constructor = wechat;
     function wechat(token){
       this.token = token;
+      this.getMsg = bind$(this, 'getMsg', prototype);
       this.video = bind$(this, 'video', prototype);
       this.voice = bind$(this, 'voice', prototype);
       this.event = bind$(this, 'event', prototype);
@@ -188,6 +189,8 @@
         return xml += chunk;
       });
       return req.on('end', function(){
+        console.log('-------------------------');
+        console.log(this.events);
         return next(parseJson(xml, this.events));
       });
     };
