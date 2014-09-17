@@ -43,7 +43,7 @@
             msg = {
               FromUserName: data.ToUserName,
               ToUserName: data.FromUserName,
-              Content: ">>> " + data.Content + " <<<"
+              Content: "<a href=\"http://96.47.232.148:3000/\">点击访问主页</a>"
             };
             results = helperWechat.parseMsg(msg);
             return done(null, results);
@@ -68,7 +68,7 @@
               msg = {
                 FromUserName: data.ToUserName,
                 ToUserName: data.FromUserName,
-                Content: settings.welcome
+                Content: "" + settings.welcome + "\n<a href=\"http://96.47.232.148:3000/\">点击访问主页</a>"
               };
               results = helperWechat.parseMsg(msg);
               return done(null, results);
