@@ -69,6 +69,8 @@
                   ToUserName: data.FromUserName,
                   Content: settings.welcome
                 };
+                console.log('--------------- mgs ---------------------');
+                console.log(msg);
                 results = helperWechat.parseMsg(msg);
                 return done(null, results);
               });
