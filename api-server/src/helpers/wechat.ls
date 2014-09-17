@@ -124,8 +124,8 @@ parseXml = (data) ->
   msg
 
 class wechat
-  @events = {}
   (@token) ->
+    @events = {}
   check-signature: (parms) ->
     if !@token || !parms || !parms.timestamp || !parms.nonce || !parms.signature
       return false
