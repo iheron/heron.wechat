@@ -124,6 +124,7 @@
   wechat = (function(){
     wechat.displayName = 'wechat';
     var prototype = wechat.prototype, constructor = wechat;
+    wechat.events = {};
     function wechat(token){
       this.token = token;
       this.video = bind$(this, 'video', prototype);
