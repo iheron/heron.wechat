@@ -30,7 +30,7 @@ class @wechat
       logger.info '------------------ api/wechat auth yes ----------------------'
       @status = 200
 
-      settings = yield (done) -> setting_rep.findAll done
+      settings = yield (done) -> setting_rep.findOne done
       xml = yield (done) ->
         helper-wechat
         .all (data) ->
@@ -80,5 +80,5 @@ class @wechat
 
         helper-wechat.getMsg @req, (data) ->
           logger.info data
-
+      logger.info xml
       @body = xml

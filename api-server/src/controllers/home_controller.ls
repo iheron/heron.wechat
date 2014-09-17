@@ -12,6 +12,4 @@ class @index
 class @test
   @get = ->*
     rep = new setting_repository!
-    @body = yield (done) -> rep.findAll (err, data) ->
-      console.log err
-      done err, data
+    @body = yield (done) -> rep.findOne done
