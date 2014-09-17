@@ -172,7 +172,7 @@ class wechat
     xml = ''
     req.on 'data', (chunk) ->
       xml += chunk
-    req.on 'end', ->
+    req.on 'end', ~>
       console.log '-------------------------'
       console.log @events
       next parseJson(xml, @events)
