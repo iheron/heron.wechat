@@ -4,6 +4,7 @@ require!{
 }
 
 parseJson = (xml, events) ->
+  console.log events
   msg = {}
   xml2js.parseString xml, (err, result) !->
     data = result.xml
