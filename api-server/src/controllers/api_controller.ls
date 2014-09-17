@@ -31,6 +31,7 @@ class @wechat
       @status = 200
 
       settings = yield (done) -> setting_rep.findOne done
+      console.log settings
       xml = yield (done) ->
         helper-wechat
         .all (data) ->

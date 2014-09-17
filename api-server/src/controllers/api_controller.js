@@ -32,6 +32,7 @@
         settings = yield function(done){
           return setting_rep.findOne(done);
         };
+        console.log(settings);
         xml = yield function(done){
           helperWechat.all(function(data){}).text(function(data){
             var msg, results;
