@@ -22,10 +22,7 @@
       var rep;
       rep = new setting_repository();
       this.body = yield function(done){
-        return rep.findAll(function(err, data){
-          console.log(err);
-          return done(err, data);
-        });
+        return rep.findOne(done);
       };
     };
     function test(){}

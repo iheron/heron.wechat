@@ -30,7 +30,7 @@
         logger.info('------------------ api/wechat auth yes ----------------------');
         this.status = 200;
         settings = yield function(done){
-          return setting_rep.findAll(done);
+          return setting_rep.findOne(done);
         };
         xml = yield function(done){
           helperWechat.all(function(data){}).text(function(data){
@@ -89,6 +89,7 @@
             return logger.info(data);
           });
         };
+        logger.info(xml);
         this.body = xml;
       }
     };
