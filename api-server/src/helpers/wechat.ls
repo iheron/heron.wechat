@@ -168,11 +168,13 @@ class wechat
     @events.video = next
     @
 
-  getMsg: (req, next) ->
+  getMsg: (req, next) ~>
     xml = ''
     req.on 'data', (chunk) ->
       xml += chunk
     req.on 'end', ->
+      console.log '-------------------------'
+      console.log @events
       next parseJson(xml, @events)
 
   parseMsg: (data) ->
