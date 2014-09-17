@@ -1,11 +1,9 @@
 require!{
   "./encrypt"
   xml2js
-  events
 }
-emitter = new events.EventEmitter()
-emitter.setMaxListeners 0
-parseJson = (xml) ->
+
+parseJson = (xml, events) ->
   msg = {}
   xml2js.parseString xml, (err, result) !->
     data = result.xml
@@ -13,43 +11,44 @@ parseJson = (xml) ->
     msg.FromUserName = data.FromUserName.[0]
     msg.CreateTime = data.CreateTime.[0]
     msg.MsgType = data.MsgType.[0]
+    events.all msg if 'function' == typeof events.all
     switch msg.MsgType
     | 'text' =>
       msg.Content = data.Content.[0]
       msg.MsgId = data.MsgId.[0]
-      emitter.emit('text', msg)
+      events.text msg if 'function' == typeof events.text
     | 'image' =>
       msg.PicUrl = data.PicUrl.[0]
       msg.MsgId = data.MsgId.[0]
       msg.MediaId = data.MediaId.[0]
-      emitter.emit('image', msg)
+      events.image msg if 'function' == typeof events.image
     | 'voice' =>
       msg.MediaId = data.MediaId.[0]
       msg.Format = data.Format.[0]
       msg.MsgId = data.MsgId.[0]
-      emitter.emit('voice', msg)
+      events.voice msg if 'function' == typeof events.voice
     | 'video' =>
       msg.MediaId = data.MediaId.[0]
       msg.ThumbMediaId = data.ThumbMediaId.[0]
       msg.MsgId = data.MsgId.[0]
-      emitter.emit("video", msg)
+      events.video msg if 'function' == typeof events.video
     | 'location' =>
       msg.Location_X = data.Location_X.[0]
       msg.Location_Y = data.Location_Y.[0]
       msg.Scale = data.Scale.[0]
       msg.Label = data.Label.[0]
       msg.MsgId = data.MsgId.[0]
-      emitter.emit('location', msg)
+      events.location msg if 'function' == typeof events.location
     | 'link' =>
       msg.Title = data.Title.[0]
       msg.Description = data.Description.[0]
       msg.Url = data.Url.[0]
       msg.MsgId = data.MsgId.[0]
-      emitter.emit('link', msg)
+      events.link msg if 'function' == typeof events.link
     | 'event' =>
       msg.Event = data.Event.[0]
       msg.EventKey = data.EventKey.[0]
-      emitter.emit('event', msg)
+      events.event msg if 'function' == typeof events.event
   msg
 
 parseXml = (data) ->
@@ -135,56 +134,46 @@ class wechat
     else
       false
 
-  all: (next) ->
-    emitter.on('text', next)
-    emitter.on('image', next)
-    emitter.on('location', next)
-    emitter.on('link', next)
-    emitter.on('event', next)
-    emitter.on('voice', next)
-    emitter.on('video', next)
-    @
+  all: (next) ~>
+    @events.all = next
+    @events
 
-  text: (next) ->
-    emitter.on('text', next)
-    @
+  text: (next) ~>
+    @events.text = next
+    @events
 
-  image: (next) ->
-    emitter.on('image', next)
-    @
+  image: (next) ~>
+    @events.image = next
+    @events
 
-  location: (next) ->
-    emitter.on('location', next)
-    @
+  location: (next) ~>
+    @events.location = next
+    @events
 
-  link: (next) ->
-    emitter.on('link', next)
-    @
+  link: (next) ~>
+    @events.link = next
+    @events
 
-  event: (next) ->
-    emitter.on('event', next)
-    @
+  event: (next) ~>
+    @events.event = next
+    @events
 
-  voice: (next) ->
-    emitter.on('voice', next)
-    @
+  voice: (next) ~>
+    @events.voice = next
+    @events
 
-  video: (next) ->
-    emitter.on('video', next)
-    @
+  video: (next) ~>
+    @events.video = next
+    @events
 
   getMsg: (req, next) ->
-    xml = ""
-    req.on "data", (chunk) ->
+    xml = ''
+    req.on 'data', (chunk) ->
       xml += chunk
-    req.on "end", ->
-      next parseJson(xml)
+    req.on 'end', ->
+      next parseJson(xml, @events)
 
   parseMsg: (data) ->
     parseXml data
-
-  send: (res, data) ->
-    res.writeHead 200, {'Content-Type': 'text/plain'}
-    res.end parseXml data
 
 module.exports = (token) -> new wechat token
