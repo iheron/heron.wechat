@@ -21,7 +21,7 @@
       }
     };
     wechat.post = function*(){
-      var xml;
+      var settings, xml;
       if (!helperWechat.checkSignature(this.request.query)) {
         logger.info('------------------ api/wechat auth no ----------------------');
         this.status = 200;
@@ -29,6 +29,9 @@
       } else {
         logger.info('------------------ api/wechat auth yes ----------------------');
         this.status = 200;
+        settings = yield function(done){
+          return setting_rep.findOne(done);
+        };
         xml = yield function(done){
           helperWechat.all(function(data){}).text(function(data){
             var msg, results;
@@ -62,18 +65,13 @@
             });
             switch (data.Event) {
             case 'subscribe':
-              return setting_rep.findOne(function(err, settings){
-                var msg, results;
-                msg = {
-                  FromUserName: data.ToUserName,
-                  ToUserName: data.FromUserName,
-                  Content: settings.welcome
-                };
-                console.log('--------------- mgs ---------------------');
-                console.log(msg);
-                results = helperWechat.parseMsg(msg);
-                return done(null, results);
-              });
+              msg = {
+                FromUserName: data.ToUserName,
+                ToUserName: data.FromUserName,
+                Content: settings.welcome
+              };
+              results = helperWechat.parseMsg(msg);
+              return done(null, results);
             case 'unsubscribe':
               msg = {
                 FromUserName: data.ToUserName,

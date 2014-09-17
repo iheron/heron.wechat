@@ -30,6 +30,8 @@ class @wechat
       logger.info '------------------ api/wechat auth yes ----------------------'
       @status = 200
 
+      settings = yield (done) -> setting_rep.findOne done
+
       xml = yield (done) ->
         helper-wechat
         .all (data) ->
@@ -60,15 +62,12 @@ class @wechat
 
           switch data.Event
           | 'subscribe' =>
-            setting_rep.findOne (err, settings) ->
-              msg =
-                FromUserName: data.ToUserName
-                ToUserName: data.FromUserName
-                Content: settings.welcome
-              console.log '--------------- mgs ---------------------'
-              console.log msg
-              results = helper-wechat.parseMsg msg
-              done null, results
+            msg =
+              FromUserName: data.ToUserName
+              ToUserName: data.FromUserName
+              Content: settings.welcome
+            results = helper-wechat.parseMsg msg
+            done null, results
           | 'unsubscribe' =>
             msg =
               FromUserName: data.ToUserName
