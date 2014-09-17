@@ -4,7 +4,6 @@ require!{
 }
 
 parseJson = (xml, events) ->
-  console.log events
   msg = {}
   xml2js.parseString xml, (err, result) !->
     data = result.xml
@@ -173,8 +172,6 @@ class wechat
     req.on 'data', (chunk) ->
       xml += chunk
     req.on 'end', ~>
-      console.log '-------------------------'
-      console.log @events
       next parseJson(xml, @events)
 
   parseMsg: (data) ->

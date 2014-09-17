@@ -6,7 +6,7 @@ require!{
 
 class setting_repository extends repository_base
   ->
-    super consts.CONFIGURE.development.mongo
+    super consts.CONFIGURE.env.mongo
     @model = @connection.model 'setting', setting_schema
 
 module.exports = setting_repository

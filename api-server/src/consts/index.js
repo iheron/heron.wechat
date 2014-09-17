@@ -6,7 +6,7 @@
   mvc = require('heron-mvc');
   app = koa();
   module.exports = {
-    CONFIGURE: (ref$ = mvc.configure.load(path.join(__dirname, '../../configure')), ref$[app.env + ""] = mvc.configure.load(path.join(__dirname, '../../configure', app['env'])), ref$),
+    CONFIGURE: (ref$ = mvc.configure.load(path.join(__dirname, '../../configure')), ref$.env = mvc.configure.load(path.join(__dirname, '../../configure', app['env'])), ref$),
     WECHAT_TOKEN: "heron_wechat",
     FLASH_TIMEOUT: 10
   };
