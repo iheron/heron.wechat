@@ -65,6 +65,8 @@ class @wechat
                 FromUserName: data.ToUserName
                 ToUserName: data.FromUserName
                 Content: settings.welcome
+              console.log '--------------- mgs ---------------------'
+              console.log msg
               results = helper-wechat.parseMsg msg
               done null, results
           | 'unsubscribe' =>
