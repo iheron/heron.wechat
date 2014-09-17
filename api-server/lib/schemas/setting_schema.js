@@ -7,4 +7,5 @@
       type: String
     }
   });
+  module.exports = settingSchema;
 }).call(this);
