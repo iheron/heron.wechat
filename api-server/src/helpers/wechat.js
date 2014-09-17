@@ -5,6 +5,7 @@
   xml2js = require('xml2js');
   parseJson = function(xml, events){
     var msg;
+    console.log(events);
     msg = {};
     xml2js.parseString(xml, function(err, result){
       var data;
