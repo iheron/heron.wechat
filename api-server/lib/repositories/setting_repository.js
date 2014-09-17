@@ -7,7 +7,7 @@
   setting_repository = (function(superclass){
     var prototype = extend$((import$(setting_repository, superclass).displayName = 'setting_repository', setting_repository), superclass).prototype, constructor = setting_repository;
     function setting_repository(){
-      setting_repository.superclass.call(this, consts.CONFIGURE.development.mongo);
+      setting_repository.superclass.call(this, consts.CONFIGURE.env.mongo);
       this.model = this.connection.model('setting', setting_schema);
     }
     return setting_repository;
