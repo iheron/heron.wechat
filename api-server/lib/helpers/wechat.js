@@ -150,35 +150,35 @@
     };
     prototype.all = function(next){
       this.events.all = next;
-      return this.events;
+      return this;
     };
     prototype.text = function(next){
       this.events.text = next;
-      return this.events;
+      return this;
     };
     prototype.image = function(next){
       this.events.image = next;
-      return this.events;
+      return this;
     };
     prototype.location = function(next){
       this.events.location = next;
-      return this.events;
+      return this;
     };
     prototype.link = function(next){
       this.events.link = next;
-      return this.events;
+      return this;
     };
     prototype.event = function(next){
       this.events.event = next;
-      return this.events;
+      return this;
     };
     prototype.voice = function(next){
       this.events.voice = next;
-      return this.events;
+      return this;
     };
     prototype.video = function(next){
       this.events.video = next;
-      return this.events;
+      return this;
     };
     prototype.getMsg = function(req, next){
       var xml;
