@@ -43,7 +43,9 @@ class @wechat
           msg =
             FromUserName: data.ToUserName
             ToUserName: data.FromUserName
-            Content: ">>> #{ data.Content } <<<"
+            Content: """
+                     <a href="http://96.47.232.148:3000/">点击访问主页</a>
+                     """
           results = helper-wechat.parseMsg msg
           done null, results
 
@@ -65,7 +67,10 @@ class @wechat
             msg =
               FromUserName: data.ToUserName
               ToUserName: data.FromUserName
-              Content: settings.welcome
+              Content: """
+                       #{ settings.welcome }
+                       <a href="http://96.47.232.148:3000/">点击访问主页</a>
+                       """
             results = helper-wechat.parseMsg msg
             done null, results
           | 'unsubscribe' =>
