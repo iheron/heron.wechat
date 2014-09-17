@@ -29,6 +29,8 @@ class @wechat
     else
       logger.info '------------------ api/wechat auth yes ----------------------'
       @status = 200
+
+      settings = yield (done) -> setting_rep.findAll done
       xml = yield (done) ->
         helper-wechat
         .all (data) ->
@@ -62,7 +64,7 @@ class @wechat
             msg =
               FromUserName: data.ToUserName
               ToUserName: data.FromUserName
-              Content: yield (done) -> rep.findAll (err, data) -> done err, data.message
+              Content: settings.welcome
             results = helper-wechat.parseMsg msg
             done null, results
           | 'unsubscribe' =>
