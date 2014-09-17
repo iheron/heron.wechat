@@ -14,7 +14,6 @@ open = (mongo_config) ->
       "poolSize": mongo_config.poolsize
   mongoose.createConnection uri, options, ->
     logger.info "connected in #{uri}"
-    logger.info "connection state: #{mongoose.STATES[mongoose.connection.readyState]}"
 
 close = ->
   mongoose.disconnect (err) ->

@@ -2,10 +2,14 @@ require!{
   co
   '../consts'
   '../helpers/flash'
+  '../repositories/setting_repository'
 }
 helper-wechat = require '../helpers/wechat' <| consts.WECHAT_TOKEN
+
 logger = require '../helpers/logger'
 .get-logger 'controller'
+
+setting_rep = new setting_repository!
 
 class @wechat
   @get = ->*
@@ -58,7 +62,7 @@ class @wechat
             msg =
               FromUserName: data.ToUserName
               ToUserName: data.FromUserName
-              Content: '订阅成功!'
+              Content: yield (done) -> rep.findAll (err, data) -> done err, data.message
             results = helper-wechat.parseMsg msg
             done null, results
           | 'unsubscribe' =>

@@ -14,8 +14,7 @@
       }
     };
     return mongoose.createConnection(uri, options, function(){
-      logger.info("connected in " + uri);
-      return logger.info("connection state: " + mongoose.STATES[mongoose.connection.readyState]);
+      return logger.info("connected in " + uri);
     });
   };
   close = function(){
