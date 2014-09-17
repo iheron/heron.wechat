@@ -28,10 +28,7 @@
         logger.info('------------------ api/wechat auth yes ----------------------');
         this.status = 200;
         xml = yield function(done){
-          helperWechat.getMsg(this.req, function(data){
-            return logger.info(data);
-          });
-          return helperWechat.all(function(data){}).text(function(data){
+          helperWechat.all(function(data){}).text(function(data){
             var msg, results;
             co(flash.yieldIsExists(data.MsgId))(function(err, flag){
               if (flag) {
@@ -82,6 +79,9 @@
               logger.info("has no event " + data.Event);
               return done(null, '');
             }
+          });
+          return helperWechat.getMsg(this.req, function(data){
+            return logger.info(data);
           });
         };
         this.body = xml;

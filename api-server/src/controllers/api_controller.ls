@@ -26,8 +26,6 @@ class @wechat
       logger.info '------------------ api/wechat auth yes ----------------------'
       @status = 200
       xml = yield (done) ->
-        helper-wechat.getMsg @req, (data) ->
-          logger.info data
         helper-wechat
         .all (data) ->
 
@@ -73,5 +71,8 @@ class @wechat
           | _ =>
             logger.info "has no event #{ data.Event }"
             done null, ''
+
+        helper-wechat.getMsg @req, (data) ->
+          logger.info data
 
       @body = xml
