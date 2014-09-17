@@ -183,15 +183,15 @@
       return this;
     };
     prototype.getMsg = function(req, next){
-      var xml;
+      var xml, this$ = this;
       xml = '';
       req.on('data', function(chunk){
         return xml += chunk;
       });
       return req.on('end', function(){
         console.log('-------------------------');
-        console.log(this.events);
-        return next(parseJson(xml, this.events));
+        console.log(this$.events);
+        return next(parseJson(xml, this$.events));
       });
     };
     prototype.parseMsg = function(data){
