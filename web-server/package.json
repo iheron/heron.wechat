@@ -15,6 +15,7 @@
     "koa-router": "*",
     "koa-static": "*",
     "lodash": "*",
-    "log4js": "*"
+    "log4js": "*",
+    "mongoose": "*"
   }
 }

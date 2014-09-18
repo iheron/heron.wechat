@@ -253,7 +253,7 @@ jQuery(document).ready(function () {
                 start: new Date(y, 9 - 1, 20),
                 end: new Date(y, 9 - 1, 20),
                 backgroundColor: App.getLayoutColorCode('red')
-            },
+            }
         ]
     });
 
