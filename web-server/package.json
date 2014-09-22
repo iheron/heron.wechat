@@ -8,14 +8,15 @@
   "dependencies": {
     "co": "*",
     "co-views": "*",
-    "hogan.js": "*",
     "heron-mvc": "*",
+    "hogan.js": "*",
     "koa": "*",
     "koa-mount": "*",
     "koa-router": "*",
     "koa-static": "*",
     "lodash": "*",
     "log4js": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "redis": "*"
   }
 }

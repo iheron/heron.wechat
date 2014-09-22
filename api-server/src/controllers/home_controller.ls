@@ -11,5 +11,5 @@ class @index
 
 class @test
   @get = ->*
-    rep = new setting_repository!
-    @body = yield (done) -> rep.findOne done
+    redis = new redis-client!
+    @body = yield (done) -> redis.get 'key1', done

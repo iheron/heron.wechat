@@ -19,10 +19,10 @@
     test.displayName = 'test';
     var prototype = test.prototype, constructor = test;
     test.get = function*(){
-      var rep;
-      rep = new setting_repository();
+      var redis;
+      redis = new redisClient();
       this.body = yield function(done){
-        return rep.findOne(done);
+        return redis.get('key1', done);
       };
     };
     function test(){}
