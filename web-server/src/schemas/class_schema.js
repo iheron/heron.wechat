@@ -7,5 +7,5 @@
       type: String
     }
   });
-  module.exports = curriculumSchema;
+  module.exports = classSchema;
 }).call(this);

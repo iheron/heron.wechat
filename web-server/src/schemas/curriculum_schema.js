@@ -4,7 +4,7 @@
   mongoose = require('mongoose');
   curriculumSchema = new mongoose.Schema({
     classId: {
-      type: String
+      type: mongoose.Schema.ObjectId
     },
     title: {
       type: String

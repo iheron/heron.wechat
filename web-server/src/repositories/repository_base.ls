@@ -1,7 +1,6 @@
 require!{
   path
   mongoose
-  '../helpers/file'
 }
 
 logger = require '../helpers/logger'
@@ -52,8 +51,8 @@ class repository_base
   removeOne: (id, next) ->
     @model.findOneAndRemove id, next
 
-  findAll: (next) ->
-    @model.find next
+  findAll: (doc, next) ->
+    @model.find doc || null, next
 
   findOne: (doc, next) ->
     @model.findOne doc, next

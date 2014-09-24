@@ -31,7 +31,20 @@
     </div>
 
 </div>
-
+<script>
+    var color = [ '#555555', '#35aa47', '#4b8df8', '#852b99', '#ffb848', '#e02222'];
+    var curriculumArr = [
+        {{# data }}
+        {
+            title: '{{ title }}' + '\n{{ description }}',
+            start: new Date('{{ start }}'),
+            end: new Date('{{ end }}'),
+            allDay: {{ allDay }},
+            backgroundColor: color[{{ level }}]
+        },
+        {{/ data }}
+    ];
+</script>
 {{#yield-footer_scripts}}
 <script src="/media/js/fullcalendar.min.js"></script>
 <script src="/media/js/app.js"></script>
@@ -39,12 +52,6 @@
 <script>
 
 jQuery(document).ready(function () {
-
-    // initiate layout and plugins
-
-
-//        Calendar.init();
-
 
     if (!jQuery().fullCalendar) {
         return;
@@ -123,8 +130,6 @@ jQuery(document).ready(function () {
         var title = $('#event_title').val();
         addEvent(title);
     });
-
-
     $('#calendar').fullCalendar('destroy'); // destroy the calendar
     $('#calendar').fullCalendar({ //re-initialize the calendar
         header: h,
@@ -181,80 +186,7 @@ jQuery(document).ready(function () {
             week: "yyyy年MMM月d[ yyyy]日 { '&#8212;'[ MMM月]d日}", // Sep 7 - 13 2009
             day: 'yyyy年MMM月d日 dddd'                  // Tuesday, Sep 8, 2009
         },
-        events: [
-            {
-                title: '信息素养',
-                start: new Date(y, 9 - 1, 22, 18, 30, 0),
-                end: new Date(y, 9 - 1, 22, 21, 30, 0),
-                allDay: false,
-                backgroundColor: App.getLayoutColorCode('yellow')
-            },
-            {
-                title: '信息素养',
-                start: new Date(y, 9 - 1, 15, 18, 30, 0),
-                end: new Date(y, 9 - 1, 15, 21, 30, 0),
-                allDay: false,
-                backgroundColor: App.getLayoutColorCode('yellow')
-            },
-            {
-                title: '计算机组成原理',
-                start: new Date(y, 9 - 1, 21, 9, 0, 0),
-                end: new Date(y, 9-1, 21, 12, 0, 0),
-                allDay: false,
-                backgroundColor: App.getLayoutColorCode('green')
-            },
-            {
-                title: '模拟电路与数字电路',
-                start: new Date(y, 9 - 1, 21, 13, 0, 0),
-                end: new Date(y, 9-1, 21, 16, 0, 0),
-                allDay: false,
-                backgroundColor: App.getLayoutColorCode('green')
-            },
-            {
-                title: '大学英语',
-                start: new Date(y, 9 - 1, 21, 16, 30, 0),
-                end: new Date(y, 9-1, 21, 19, 30, 0),
-                allDay: false,
-                backgroundColor: App.getLayoutColorCode('green')
-            },
-            {
-                title: '计算机组成原理',
-                start: new Date(y, m, d - 3, 16, 0),
-                allDay: false,
-                backgroundColor: App.getLayoutColorCode('grey')
-            },
-            {
-                title: '计算机作业提交',
-                start: new Date(y, m, d + 4, 16, 0),
-                allDay: false,
-                backgroundColor: App.getLayoutColorCode('red')
-            },
-            {
-                title: 'Meeting',
-                start: new Date(y, m, d, 10, 30),
-                allDay: false
-            },
-            {
-                title: 'Lunch',
-                start: new Date(y, m, d, 12, 0),
-                end: new Date(y, m, d, 14, 0),
-                backgroundColor: App.getLayoutColorCode('grey'),
-                allDay: false
-            },
-            {
-                title: 'Birthday Party',
-                start: new Date(y, m, d + 1, 19, 0),
-                end: new Date(y, m, d + 1, 22, 30),
-                backgroundColor: App.getLayoutColorCode('purple'),
-                allDay: false
-            },
-            {
-                title: '补考',
-                start: new Date(y, 9 - 1, 20),
-                end: new Date(y, 9 - 1, 20),
-                backgroundColor: App.getLayoutColorCode('red')
-            }
-        ]
+        events: curriculumArr
     });
 
 

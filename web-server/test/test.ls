@@ -1,37 +1,42 @@
 require!{
   co
-  redis
+  moment
+  mongoose
+  '../src/repositories/curriculum_repository': curm_rep
+  '../src/repositories/class_repository': class_rep
 }
-fn1 = (done) ->
-  set-timeout ->
-    done null, 'hello'
-  , 100
-fn2 = (done) ->
-  set-timeout ->
-    done null, 'word'
-  , 50
-fn3 = (count) ->
-  (done) ->
-    set-timeout ->
-      done null, count
-    , 10
 
+curm-rep = new curm_rep!
+class-rep = new class_rep!
+begin-date = new Date(2014, 8, 20, 18, 30, 0)
 
+#class-rep.findAll { _id: '54226f9bd3b74372fc21d9a9' } ,(err, data) ->
+#  console.log data
+main = co ->*
+  for i in [ 0 to 16 ]
+    if false
+      doc =
+        class-id: '54226f9bd3b74372fc21d9a9'
+        title: '大学英语(休假)'
+        description: '休假'
+        start: (moment begin-date).add { weeks: i }
+        end: (moment begin-date).add { weeks: i ,hours: 3 }
+        allDay: false
+        level: 1
+    else
+      doc =
+        class-id: '54226f9bd3b74372fc21d9a9'
+        title: '信息素养'
+        description: '共计32学时，自行到网上公开课学习。'
+        start: (moment begin-date).add { weeks: i }
+        end: (moment begin-date).add { weeks: i ,hours: 3 }
+        allDay: false
+        level: 1
+    res = yield (done) ->
+      curm-rep.save doc, (err, data) ->
+        done err, i
+    console.log res
 
-main = ->*
-  client = redis.createClient()
-  res = yield (done) -> client.get key, done
-  console.log res
-
-main2 = (key) ->
-  ->*
-    client = redis.createClient()
-    for i in [ 1 to 5]
-      res = yield (done) -> client.get "#key#i", done
-      console.log res
-
-main3 = ->*
-  for i in [ 1 to 3 ]
-    console.log '--------'
-    yield main2('key')
-(co main3)!
+main!
+#curm-rep.findAll (err, data) ->
+#  console.log data.0.start.getTime()

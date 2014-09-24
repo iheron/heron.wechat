@@ -8,4 +8,4 @@ class-schema = new mongoose.Schema do
 
 
 
-module.exports = curriculum-schema
+module.exports = class-schema

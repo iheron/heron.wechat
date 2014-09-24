@@ -16,6 +16,7 @@
     "koa-static": "*",
     "lodash": "*",
     "log4js": "*",
+    "moment": "*",
     "mongoose": "*",
     "redis": "*"
   }
