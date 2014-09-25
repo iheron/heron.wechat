@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/start"
+    "start": "node --harmony ./bin/start"
   },
   "dependencies": {
     "chai": "*",
