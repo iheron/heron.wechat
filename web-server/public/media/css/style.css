@@ -928,7 +928,7 @@ Page title
 /***
 Page breadcrumb
 ***/
-.page-content .breadcrumb {
+.breadcrumb {
   -webkit-border-radius: 0px;
      -moz-border-radius: 0px;
           border-radius: 0px;
@@ -940,22 +940,22 @@ Page breadcrumb
   background-color: #eee;
 }
 
-.page-content .breadcrumb a, 
-.page-content .breadcrumb i, 
-.page-content .breadcrumb span {
+.breadcrumb a,
+.breadcrumb i,
+.breadcrumb span {
   color: #333;
   font-size: 14px;
   text-shadow:none;
 }
 
-.page-content .breadcrumb i {
+.breadcrumb i {
   color: #666;
 }
 
 /***
 Dashboard date range panel
 ***/
-.page-content .breadcrumb .dashboard-date-range  {
+.breadcrumb .dashboard-date-range  {
   display: none;
   padding-top: -1px;
   margin-right: 0px;
@@ -967,23 +967,23 @@ Dashboard date range panel
   background-color: #e02222;
 }
 
-.page-content .breadcrumb .dashboard-date-range span {
+.breadcrumb .dashboard-date-range span {
   font-size: 12px;
   font-weight: 300; 
   color: #fff;
   text-transform: uppercase;
 } 
 
-.page-content .breadcrumb .dashboard-date-range .icon-calendar {
+.breadcrumb .dashboard-date-range .icon-calendar {
   text-transform: normal;
   color: #fff;
   margin-top: 0px;
   font-size: 14px;
 }
-.page-content .breadcrumb .dashboard-date-range span {
+.breadcrumb .dashboard-date-range span {
   font-weight: normal; 
 } 
-.page-content .breadcrumb .dashboard-date-range .icon-angle-down {
+.breadcrumb .dashboard-date-range .icon-angle-down {
   color:#fff;
   font-size: 16px;
 }

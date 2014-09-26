@@ -2,7 +2,23 @@
 <link href="/media/css/fullcalendar.css" rel="stylesheet"/>
 {{/yield-header_styles}}
 <div class="row-fluid">
+    <div class="container-fluid">
+    <h3 class="page-title">
+        课程表 <small>632211-12 2014秋季课程表 </small>
+    </h3>
+    </div>
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home"></i>
+            <a href="/">主页</a>
+            <i class="icon-angle-right"></i>
+        </li>
+        <li>
+            <i class="icon-map-marker"></i>
+            <a href="">课程表</a>
+        </li>
 
+    </ul>
     <div class="portlet box blue calendar">
 
         <div class="portlet-title">
