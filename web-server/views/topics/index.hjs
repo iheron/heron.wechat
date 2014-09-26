@@ -148,6 +148,7 @@
                             <div id="{{identifier}}" class="accordion-body collapse">
 
                                 <div class="accordion-inner">
+                                    {{#href}}<a href="{{href}}" target="_blank">{{title}}</a>{{/href}}
                                     <ul>
                                     {{#item}}
                                         <li>
