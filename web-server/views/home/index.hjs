@@ -1,5 +1,15 @@
 <div class="content">
-
+<div class="container-fluid">
+    <h3 class="page-title">
+        首页
+    </h3>
+</div>
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        <a href="/">首页</a>
+    </li>
+</ul>
 <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
 <div id="portlet-config" class="modal hide">
@@ -32,30 +42,33 @@
 
 <div class="tile bg-green">
     <a href="/curriculum/list">
-    <div class="tile-body">
-
-        <i class="icon-calendar"></i>
-
-    </div>
-
-    <div class="tile-object">
-
-        <div class="name">
-
-            Curriculum
-
+        <div class="tile-body">
+            <i class="icon-calendar"></i>
         </div>
-
-        <div class="number">
-
-            New
-
+        <div class="tile-object">
+            <div class="name">
+                课程表
+            </div>
+            <div class="number">
+            </div>
         </div>
-
-    </div>
     </a>
 </div>
+<div class="tile bg-blue">
+    <a href="/topics/index">
+        <div class="tile-body">
+            <i class="icon-bar-chart"></i>
+        </div>
 
+        <div class="tile-object">
+            <div class="name">
+                课程专题
+            </div>
+            <div class="number">
+            </div>
+        </div>
+    </a>
+</div>
 <div class="tile double-down bg-blue">
 
     <div class="tile-body">
@@ -81,7 +94,6 @@
     </div>
 
 </div>
-
 
 
 <div class="tile double selected bg-blue">
@@ -312,29 +324,6 @@
 
 </div>
 
-<div class="tile bg-green">
-
-    <div class="tile-body">
-
-        <i class="icon-bar-chart"></i>
-
-    </div>
-
-    <div class="tile-object">
-
-        <div class="name">
-
-            Reports
-
-        </div>
-
-        <div class="number">
-
-        </div>
-
-    </div>
-
-</div>
 
 <div class="tile bg-purple">
 

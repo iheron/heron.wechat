@@ -1,0 +1,189 @@
+<div class="container row-fluid">
+<div class="container-fluid">
+    <h3 class="page-title">
+        课程专题
+        <small>632211-12 2014秋季</small>
+    </h3>
+</div>
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        <a href="/">主页</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <i class="icon-map-marker"></i>
+        <a href="">课程专题</a>
+    </li>
+
+</ul>
+<div class="container-fluid">
+<div class="row-fluid">
+    <div class="span6">
+        <div class="portlet box blue tabbable ">
+            <div class="portlet-title">
+                <div class="caption"><i class="icon-reorder"></i>计算机组成原理</div>
+            </div>
+            <div class="portlet-body">
+                <div class="tabbable portlet-tabs">
+                    <ul class="nav nav-tabs">
+                        <li><a href="#tag1_tab2" data-toggle="tab">作业信息</a></li>
+                        <li class="active"><a href="#tag1_tab1" data-toggle="tab">简介</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tag1_tab1">
+                            <p>
+
+                            <div class="row-fluid">
+                                <div class="span4">
+                                    <img class="timeline-img pull-left" src="/images/teacher/teacher_li.jpg" alt="李老师"/>
+                                </div>
+                                <div class="span8">
+                                    计算机组成原理，1-17周（其中第2、3、9周休息）
+                                    <br/>
+                                    教师：李宪永
+                                    地点：（三）207
+                                </div>
+                            </div>
+                            </p>
+
+                            <div class="alert">
+                                <p>
+                                    公共邮箱：<span class="badge badge-info">bhydjsj2010@163.com</span>
+                                    <br/>
+                                    公共邮箱密码：<span class="badge badge-info">1234567890</span>
+                                </p>
+
+                                <p>
+                                    <span class="badge badge-important">注意</span>
+                                    不要往这发作业。
+                                    <br/>
+                                    公共邮箱是解答同学们学习中的问题、公布作业内容和参考答案，复习提要等重要信息的交流平台。希望同学们时常加以关注。
+
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <div class="tab-pane " id="tag1_tab2">
+                            <p>
+                            <p>
+                                作业邮箱：<span class="badge badge-info">lixianyongdh2@163.com</span>
+
+                            </p>
+
+                            <p>
+                                课程作业占20分，希望同学们独立地认真完成作业，并按如下地要求以电子文档方式提交作业。
+                            <div class="alert">
+                                <ol>
+                                    <li>用Word文档或Power Point文件完成作业</li>
+                                    <li>
+                                        作业的文件名：<span class="badge badge-info">学号-姓名-作业**</span>
+                                        <br/>
+                                        （**为第几次作业编号，如01、02、03）
+                                        <br/>
+                                        如：39060101-王红-作业02，在规定时间之前将作业发到作业邮箱。
+                                    </li>
+                                    <li>
+                                        一次作业发一封邮件，补交的也是。
+                                        按要求设置邮件主题：
+                                        <br/>
+                                        作业**-0*-班-学号
+                                        示例：作业11-01班-26
+                                    </li>
+                                </ol>
+                        </div>
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="span6">
+    <div class="portlet box blue tabbable ">
+
+        <div class="portlet-title">
+
+            <div class="caption"><i class="icon-reorder"></i>信息素养</div>
+
+        </div>
+
+        <div class="portlet-body">
+
+            <div class="tabbable portlet-tabs">
+
+                <ul class="nav nav-tabs">
+                    <li><a href="#tag2_tab2" data-toggle="tab">课程</a></li>
+                    <li class="active"><a href="#tag2_tab1" data-toggle="tab">简介</a></li>
+
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tag2_tab1">
+                        <p>
+                            网上自学，还要什么简介啊。
+                        </p>
+                    </div>
+                    <div class="tab-pane" id="tag2_tab2">
+
+                        <p>
+                        <div class="accordion scrollable in collapse" id="accordion" style="height: auto;">
+                        {{#data}}
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#{{identifier}}">
+                                    <i class="icon-angle-left"></i>
+                                    {{title}}
+                                </a>
+
+                            </div>
+
+                            <div id="{{identifier}}" class="accordion-body collapse">
+
+                                <div class="accordion-inner">
+                                    <ul>
+                                    {{#item}}
+                                        <li>
+                                            {{#href}}<a href="{{href}}" target="_blank">{{title}}</a>{{/href}}
+                                            {{^href}}{{title}}{{/href}}
+                                            <ul>
+                                            {{#item}}
+                                            <li>
+                                                {{#href}}<a href="{{href}}" target="_blank">{{title}}</a>{{/href}}
+                                                {{^href}}{{title}}{{/href}}
+                                            </li>
+                                            {{/item}}
+                                            </ul>
+                                        </li>
+                                    {{/item}}
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        {{/data}}
+                        </div>
+                        </p>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+</div>
