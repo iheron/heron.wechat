@@ -8,21 +8,21 @@ require!{
 
 curm-rep = new curm_rep!
 class-rep = new class_rep!
-begin-date = new Date(2014, 8, 20, 18, 30, 0)
+begin-date = new Date(2014, 8, 15, 18, 30, 0)
 
 #class-rep.findAll { _id: '54226f9bd3b74372fc21d9a9' } ,(err, data) ->
 #  console.log data
 main = co ->*
-  for i in [ 0 to 16 ]
+  for i in [ 0 to 15 ]
     if false
       doc =
         class-id: '54226f9bd3b74372fc21d9a9'
-        title: '大学英语(休假)'
+        title: '模拟电路与数字电路(休假)'
         description: '休假'
         start: (moment begin-date).add { weeks: i }
         end: (moment begin-date).add { weeks: i ,hours: 3 }
         allDay: false
-        level: 1
+        level: 0
     else
       doc =
         class-id: '54226f9bd3b74372fc21d9a9'

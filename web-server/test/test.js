@@ -8,15 +8,15 @@
   class_rep = require('../src/repositories/class_repository');
   curmRep = new curm_rep();
   classRep = new class_rep();
-  beginDate = new Date(2014, 8, 20, 18, 30, 0);
+  beginDate = new Date(2014, 8, 15, 18, 30, 0);
   main = co(function*(){
     var i$, ref$, len$, i, doc, res;
-    for (i$ = 0, len$ = (ref$ = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]).length; i$ < len$; ++i$) {
+    for (i$ = 0, len$ = (ref$ = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]).length; i$ < len$; ++i$) {
       i = ref$[i$];
       if (false) {
         doc = {
           classId: '54226f9bd3b74372fc21d9a9',
-          title: '大学英语(休假)',
+          title: '模拟电路与数字电路(休假)',
           description: '休假',
           start: moment(beginDate).add({
             weeks: i
@@ -26,7 +26,7 @@
             hours: 3
           }),
           allDay: false,
-          level: 1
+          level: 0
         };
       } else {
         doc = {
