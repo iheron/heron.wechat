@@ -1,0 +1,87 @@
+<div class="content">
+    <div class="container-fluid">
+        <h3 class="page-title">
+            Get Key
+        </h3>
+    </div>
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home"></i>
+            <a href="/">首页</a>
+        </li>
+    </ul>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="portlet box blue">
+                <div class="portlet-title">
+                    <div class="caption"><i class="icon-key"></i>Simple Table</div>
+
+                </div>
+
+                <div class="portlet-body">
+                    <div class="container-fluid">
+                        <form class="form-horizontal" method="post">
+                            <div class="control-group">
+
+                                <label class="control-label">Url</label>
+
+                                <div class="controls">
+
+                                    <input type="text" class="span6 m-wrap" name="url"
+                                           placeholder="http://a.163.com/14/1016/17/A8MPP33400314RS6.html"
+                                           value="http://a.163.com/14/1016/17/A8MPP33400314RS6.html">
+
+                                    <span class="help-inline">Get Key!!!</span>
+
+                                </div>
+
+                            </div>
+                            <div class="form-actions">
+
+                                <button type="submit" class="btn blue">Submit</button>
+
+                                <button type="button" class="btn">Cancel</button>
+
+                            </div>
+                        </form>
+                        <hr/>
+
+                        <div class="row-fluid navbar">
+                            <ul class="nav navbar-nav">
+                                {{#data}}
+                                <li style="width: 400px;">
+                                    <button class="btn purple-stripe" style="min-width: 300px;" data-role="key">{{.}}</button>
+
+                                    <button type="button" class="btn green" data-role="copy" data-clipboard-text="{{.}}">Copy</button>
+
+                                </li>
+                                {{/data}}
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#yield-footer_scripts}}
+<script src="/javascripts/ZeroClipboard.min.js"></script>
+<script>
+    var client = new ZeroClipboard( $('[data-role=copy]') );
+
+    client.on( "ready", function( readyEvent ) {
+
+    } );
+    client.on( "aftercopy", function( event ) {
+        var e = event.target;
+        $(e).addClass('disabled');
+    } );
+    $(function () {
+
+    });
+</script>
+{{/yield-footer_scripts}}
